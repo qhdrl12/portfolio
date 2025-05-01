@@ -24,7 +24,7 @@ const AboutSection = () => {
                 <h3 className="font-display text-xl font-bold text-[#4D8CFF] mb-6">경력 & 학력</h3>
                 
                 <div className="relative pl-8 space-y-6">
-                  {/* 타임라인 선 - 더 자연스러운 그라데이션과 선 두께 조정 */}
+                  {/* 타임라인 선 - 그라데이션 유지 */}
                   <div className="absolute left-3 top-2 bottom-2 w-0.5 bg-gradient-to-b from-[#4D8CFF] via-[#6A74E0] to-[#7B5FFF] rounded-full opacity-80 shadow-sm"></div>
                   
                   {userData.experience.map((exp, index) => {

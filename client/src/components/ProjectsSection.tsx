@@ -20,32 +20,32 @@ const getProjectIcon = (categories: string[]) => {
 const getProjectTheme = (index: number) => {
   const themes = [
     {
-      bg: "bg-gradient-to-br from-[#4D8CFF]/10 to-[#4D8CFF]/5",
-      iconBg: "bg-[#4D8CFF]/10",
-      iconColor: "text-[#4D8CFF]",
-      borderHover: "hover:border-[#4D8CFF]/40",
-      buttonColor: "text-[#4D8CFF]"
+      bg: "bg-gradient-to-br from-[#FFEB00]/10 to-[#FFEB00]/5",
+      iconBg: "bg-[#FFEB00]/10",
+      iconColor: "text-[#FFEB00]",
+      borderHover: "hover:border-[#FFEB00]/40",
+      buttonColor: "text-[#FFEB00]"
     },
     {
-      bg: "bg-gradient-to-br from-[#7B5FFF]/10 to-[#7B5FFF]/5",
-      iconBg: "bg-[#7B5FFF]/10",
-      iconColor: "text-[#7B5FFF]",
-      borderHover: "hover:border-[#7B5FFF]/40",
-      buttonColor: "text-[#7B5FFF]"
+      bg: "bg-gradient-to-br from-[#FFD600]/10 to-[#FFD600]/5",
+      iconBg: "bg-[#FFD600]/10",
+      iconColor: "text-[#FFD600]",
+      borderHover: "hover:border-[#FFD600]/40",
+      buttonColor: "text-[#FFD600]"
     },
     {
-      bg: "bg-gradient-to-br from-[#5AC8FA]/10 to-[#5AC8FA]/5",
-      iconBg: "bg-[#5AC8FA]/10",
-      iconColor: "text-[#5AC8FA]",
-      borderHover: "hover:border-[#5AC8FA]/40",
-      buttonColor: "text-[#5AC8FA]"
+      bg: "bg-gradient-to-br from-[#FFC107]/10 to-[#FFC107]/5",
+      iconBg: "bg-[#FFC107]/10",
+      iconColor: "text-[#FFC107]",
+      borderHover: "hover:border-[#FFC107]/40",
+      buttonColor: "text-[#FFC107]"
     },
     {
-      bg: "bg-gradient-to-br from-[#34C759]/10 to-[#34C759]/5",
-      iconBg: "bg-[#34C759]/10",
-      iconColor: "text-[#34C759]",
-      borderHover: "hover:border-[#34C759]/40",
-      buttonColor: "text-[#34C759]"
+      bg: "bg-gradient-to-br from-[#FFB300]/10 to-[#FFB300]/5",
+      iconBg: "bg-[#FFB300]/10",
+      iconColor: "text-[#FFB300]",
+      borderHover: "hover:border-[#FFB300]/40",
+      buttonColor: "text-[#FFB300]"
     }
   ];
   
@@ -128,11 +128,11 @@ const ProjectsSection = () => {
     <section id="projects" className="py-20 section-fade-in">
       <div className="container mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-block mb-4 rounded-full px-3 py-1 text-xs font-medium bg-[#4D8CFF]/10 text-[#4D8CFF]">
+          <div className="inline-block mb-4 rounded-full px-3 py-1 text-xs font-medium bg-[#FFEB00]/10 text-[#FFEB00]">
             프로젝트 & 성과
           </div>
           <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-4">주요 프로젝트</h2>
-          <div className="h-1 w-20 bg-[#4D8CFF] mb-8 mx-auto"></div>
+          <div className="h-1 w-20 bg-[#FFEB00] mb-8 mx-auto"></div>
           <p className="font-sans text-white/70 leading-relaxed">
             카카오페이에서 진행한 AI 기반 금융 서비스 프로젝트들입니다.
             사용자 경험을 개선하고 혁신적인 금융 솔루션을 제공하는 것을 목표로 합니다.
