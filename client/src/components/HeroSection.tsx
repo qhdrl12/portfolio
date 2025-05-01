@@ -23,16 +23,20 @@ const HeroSection = () => {
 
             <h1 className="font-display text-5xl font-bold text-white mb-6 glow-text">
               안녕하세요,<br />
-              저는 <span className="text-[#4D8CFF]">알렉스</span>입니다
+              저는 <span className="text-[#4D8CFF]">이봉기</span>입니다
             </h1>
             
             <h2 className="font-display text-3xl font-medium text-[#4D8CFF]/90 mb-6">
               {userData.headline}
             </h2>
             
-            <p className="font-sans text-lg text-white/70 leading-relaxed mb-8">
-              {userData.about[0]}
-            </p>
+            <div className="space-y-4 text-white/70 leading-relaxed mb-8">
+              {userData.about.map((paragraph, index) => (
+                <p key={index} className={`font-sans ${index === 0 ? 'text-lg' : 'text-base'}`}>
+                  {paragraph}
+                </p>
+              ))}
+            </div>
             
             <div className="flex flex-col sm:flex-row gap-4 mt-10">
               <motion.a 
@@ -45,7 +49,7 @@ const HeroSection = () => {
               </motion.a>
               
               <motion.a 
-                href="https://github.com/bongkilee" 
+                href={userData.socialLinks.find(social => social.platform === "GitHub")?.url || "#"} 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-6 py-3 bg-[#1E1E1E] border border-[#333] text-white font-sans font-medium rounded-md hover:border-[#4D8CFF]/50 transition-all duration-300"
@@ -57,7 +61,7 @@ const HeroSection = () => {
             </div>
             
             <div className="mt-10 flex items-center">
-              <span className="text-white/60 text-sm mr-4">팔로우하기</span>
+              <span className="text-white/60 text-sm mr-4">소셜 미디어</span>
               <div className="flex space-x-3">
                 {userData.socialLinks.map((social, index) => (
                   <motion.a 
@@ -83,6 +87,23 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <div className="relative w-full max-w-md mx-auto">
+              {/* 여러 기술 스택 키워드 */}
+              <div className="absolute -top-10 -left-10 md:-left-20 text-[10px] md:text-xs text-white/40 bg-[#1E1E1E]/50 px-3 py-1 rounded-full border border-[#333]/40">
+                Python
+              </div>
+              <div className="absolute -top-5 left-1/4 text-[10px] md:text-xs text-white/40 bg-[#1E1E1E]/50 px-3 py-1 rounded-full border border-[#333]/40">
+                LangChain
+              </div>
+              <div className="absolute top-0 right-0 md:right-10 text-[10px] md:text-xs text-white/40 bg-[#1E1E1E]/50 px-3 py-1 rounded-full border border-[#333]/40">
+                PyTorch
+              </div>
+              <div className="absolute bottom-10 -right-5 md:-right-10 text-[10px] md:text-xs text-white/40 bg-[#1E1E1E]/50 px-3 py-1 rounded-full border border-[#333]/40">
+                TensorFlow
+              </div>
+              <div className="absolute -bottom-5 right-1/3 text-[10px] md:text-xs text-white/40 bg-[#1E1E1E]/50 px-3 py-1 rounded-full border border-[#333]/40">
+                GPT & LLM
+              </div>
+              
               {/* 배경 장식 */}
               <div className="absolute inset-0 bg-gradient-to-r from-[#4D8CFF]/20 to-[#7B5FFF]/20 rounded-lg blur-xl"></div>
               
@@ -97,7 +118,7 @@ const HeroSection = () => {
                   
                   <div className="absolute -bottom-3 -right-3 bg-[#121212] border-4 border-[#121212] rounded-full shadow-lg blue-glow">
                     <div className="bg-gradient-to-r from-[#4D8CFF] to-[#7B5FFF] text-white text-xs px-3 py-1 rounded-full">
-                      <i className="fas fa-check mr-1"></i> Meta 엔지니어
+                      <i className="fas fa-check mr-1"></i> 카카오페이
                     </div>
                   </div>
                 </div>

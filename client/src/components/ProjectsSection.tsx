@@ -1,72 +1,104 @@
 import { motion } from "framer-motion";
 import { userData } from "@/data/portfolio";
 
-const ProjectCard = ({ project, index }: { project: any, index: number }) => {
-  // 각 프로젝트 카드에 대한 아이콘 선택
-  const getIconForProject = (index: number) => {
-    const icons = [
-      "fas fa-star", // 프로젝트 1
-      "fas fa-globe", // 프로젝트 2
-      "fas fa-code", // 프로젝트 3
-      "fas fa-microchip" // 프로젝트 4
-    ];
-    return icons[index % icons.length];
-  };
+// 프로젝트 아이콘 매핑
+const getProjectIcon = (categories: string[]) => {
+  if (categories.includes("생성형 AI") || categories.includes("NLP")) {
+    return "fas fa-brain";
+  } else if (categories.includes("데이터 분석") || categories.includes("머신러닝")) {
+    return "fas fa-chart-bar";
+  } else if (categories.includes("오픈소스") || categories.includes("API 개발")) {
+    return "fas fa-code-branch";
+  } else if (categories.includes("자연어 처리") || categories.includes("LLM")) {
+    return "fas fa-comment-alt";
+  } else {
+    return "fas fa-project-diagram";
+  }
+};
 
-  // 각 프로젝트 카드에 대한 배경색 선택
-  const getBgColorForProject = (index: number) => {
-    const colors = [
-      "bg-[#4D8CFF]/10", // 파란색
-      "bg-[#7B5FFF]/10", // 보라색
-      "bg-[#5AC8FA]/10", // 하늘색
-      "bg-[#4CD964]/10"  // 초록색
-    ];
-    return colors[index % colors.length];
-  };
-
-  // 각 프로젝트 카드에 대한 텍스트색 선택
-  const getTextColorForProject = (index: number) => {
-    const colors = [
-      "text-[#4D8CFF]", // 파란색
-      "text-[#7B5FFF]", // 보라색
-      "text-[#5AC8FA]", // 하늘색
-      "text-[#4CD964]"  // 초록색
-    ];
-    return colors[index % colors.length];
-  };
-
-  // 상태 텍스트에 따른 스타일 설정
-  const getStateStyle = (state: string) => {
-    switch(state) {
-      case "Coming Soon":
-        return "text-yellow-400";
-      case "개발 진행 중":
-        return "text-blue-400";
-      case "알파 테스트 중":
-        return "text-green-400";
-      case "2025 출시 예정":
-        return "text-purple-400";
-      default:
-        return "text-gray-400";
+// 프로젝트 색상 테마
+const getProjectTheme = (index: number) => {
+  const themes = [
+    {
+      bg: "bg-gradient-to-br from-[#4D8CFF]/10 to-[#4D8CFF]/5",
+      iconBg: "bg-[#4D8CFF]/10",
+      iconColor: "text-[#4D8CFF]",
+      borderHover: "hover:border-[#4D8CFF]/40",
+      buttonColor: "text-[#4D8CFF]"
+    },
+    {
+      bg: "bg-gradient-to-br from-[#7B5FFF]/10 to-[#7B5FFF]/5",
+      iconBg: "bg-[#7B5FFF]/10",
+      iconColor: "text-[#7B5FFF]",
+      borderHover: "hover:border-[#7B5FFF]/40",
+      buttonColor: "text-[#7B5FFF]"
+    },
+    {
+      bg: "bg-gradient-to-br from-[#5AC8FA]/10 to-[#5AC8FA]/5",
+      iconBg: "bg-[#5AC8FA]/10",
+      iconColor: "text-[#5AC8FA]",
+      borderHover: "hover:border-[#5AC8FA]/40",
+      buttonColor: "text-[#5AC8FA]"
+    },
+    {
+      bg: "bg-gradient-to-br from-[#34C759]/10 to-[#34C759]/5",
+      iconBg: "bg-[#34C759]/10",
+      iconColor: "text-[#34C759]",
+      borderHover: "hover:border-[#34C759]/40",
+      buttonColor: "text-[#34C759]"
     }
-  };
+  ];
+  
+  return themes[index % themes.length];
+};
 
+// 상태 표시 스타일
+const getStateStyle = (state: string) => {
+  switch(state) {
+    case "Coming Soon":
+      return "text-yellow-400 bg-yellow-400/10";
+    case "개발 진행 중":
+      return "text-blue-400 bg-blue-400/10";
+    case "알파 테스트 중":
+      return "text-green-400 bg-green-400/10";
+    case "2025 출시 예정":
+      return "text-purple-400 bg-purple-400/10";
+    default:
+      return "text-gray-400 bg-gray-400/10";
+  }
+};
+
+const ProjectCard = ({ project, index }: { project: any, index: number }) => {
+  const theme = getProjectTheme(index);
+  const icon = getProjectIcon(project.categories);
+  
   return (
     <motion.div 
-      className="project-card rounded-xl"
+      className={`project-card rounded-xl ${theme.bg} ${theme.borderHover}`}
       whileHover={{ y: -5 }}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3, delay: index * 0.1 }}
     >
       <div className="p-6">
-        <div className={`${getBgColorForProject(index)} w-12 h-12 rounded-lg flex items-center justify-center mb-6`}>
-          <i className={`${getIconForProject(index)} ${getTextColorForProject(index)} text-xl`}></i>
+        <div className="flex justify-between items-start mb-6">
+          <div className={`${theme.iconBg} w-12 h-12 rounded-lg flex items-center justify-center`}>
+            <i className={`${icon} ${theme.iconColor} text-xl`}></i>
+          </div>
+          
+          {project.state && (
+            <span className={`${getStateStyle(project.state)} text-xs font-medium py-1 px-3 rounded-full inline-flex items-center`}>
+              <i className="fas fa-circle text-[8px] mr-2"></i>
+              {project.state}
+            </span>
+          )}
         </div>
         
         <h3 className="font-display text-xl font-semibold text-white mb-3">{project.title}</h3>
         
-        <div className="flex flex-wrap gap-2 mb-4">
+        <p className="font-sans text-white/70 mb-6 text-sm">{project.description}</p>
+        
+        <div className="flex flex-wrap gap-2 mb-5">
           {project.categories.map((category: string, catIndex: number) => (
             <span 
               key={catIndex}
@@ -77,24 +109,15 @@ const ProjectCard = ({ project, index }: { project: any, index: number }) => {
           ))}
         </div>
         
-        <p className="font-sans text-white/70 mb-6 text-sm">{project.description}</p>
-        
-        {project.state && (
-          <div className="flex items-center justify-between mt-6">
-            <div className={`${getStateStyle(project.state)} text-sm font-medium flex items-center`}>
-              <i className="fas fa-circle text-xs mr-2"></i>
-              {project.state}
-            </div>
-            
-            <a 
-              href="#" 
-              className={`${getTextColorForProject(index)} font-medium text-sm transition-colors duration-300 inline-flex items-center`}
-            >
-              <span>{project.state === "Coming Soon" ? "Coming Soon" : "자세히 보기"}</span>
-              <i className="fas fa-arrow-right ml-2 text-xs"></i>
-            </a>
-          </div>
-        )}
+        <div className="pt-4 border-t border-[#333]/30">
+          <a 
+            href="#" 
+            className={`${theme.buttonColor} font-medium text-sm transition-colors duration-300 inline-flex items-center`}
+          >
+            <span>{project.state === "Coming Soon" ? "출시 예정" : "자세히 보기"}</span>
+            <i className="fas fa-arrow-right ml-2 text-xs"></i>
+          </a>
+        </div>
       </div>
     </motion.div>
   );
@@ -106,31 +129,41 @@ const ProjectsSection = () => {
       <div className="container mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-block mb-4 rounded-full px-3 py-1 text-xs font-medium bg-[#4D8CFF]/10 text-[#4D8CFF]">
-            경험 & 프로젝트
+            프로젝트 & 성과
           </div>
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-4">저의 전문 프로젝트들을 소개합니다</h2>
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-4">주요 프로젝트</h2>
           <div className="h-1 w-20 bg-[#4D8CFF] mb-8 mx-auto"></div>
           <p className="font-sans text-white/70 leading-relaxed">
-            카카오페이와 메타에서 진행한 최신 AI 프로젝트들입니다.
-            보안상의 이유로 일부 정보는 제한적으로 공개됩니다.
+            카카오페이에서 진행한 AI 기반 금융 서비스 프로젝트들입니다.
+            사용자 경험을 개선하고 혁신적인 금융 솔루션을 제공하는 것을 목표로 합니다.
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {userData.projects.map((project, index) => (
             <ProjectCard key={index} project={project} index={index} />
           ))}
         </div>
         
-        <div className="text-center mt-16">
-          <a 
-            href="https://github.com/bongkilee" 
-            className="inline-block px-8 py-3 bg-[#1E1E1E] border border-[#333] text-white font-sans font-medium rounded-md hover:border-[#4D8CFF]/50 transition-all duration-300"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <i className="fab fa-github mr-2"></i> GitHub에서 오픈 소스 프로젝트 보기
-          </a>
+        <div className="mt-20 flex flex-col md:flex-row items-center justify-center gap-8 bg-[#151515]/80 backdrop-blur-sm border border-[#333]/40 rounded-xl p-8">
+          <div className="md:w-2/3">
+            <h3 className="font-display text-2xl font-bold text-white mb-4">더 많은 오픈 소스 프로젝트</h3>
+            <p className="text-white/70">
+              GitHub에서 제가 기여한 오픈 소스 프로젝트와 개인 토이 프로젝트를 확인하실 수 있습니다.
+              LangChain, Hugging Face 라이브러리 등에 기여했습니다.
+            </p>
+          </div>
+          
+          <div className="md:w-1/3 flex justify-center">
+            <a 
+              href={userData.socialLinks.find(social => social.platform === "GitHub")?.url || "#"} 
+              className="inline-block px-8 py-3 bg-[#1E1E1E] border border-[#333] text-white font-sans font-medium rounded-md hover:border-[#4D8CFF]/50 transition-all duration-300"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i className="fab fa-github mr-2"></i> GitHub 방문하기
+            </a>
+          </div>
         </div>
       </div>
     </section>

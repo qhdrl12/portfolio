@@ -2,34 +2,36 @@ import { UserData } from "@/types";
 
 export const userData: UserData = {
   name: "이봉기",
-  title: "KAKAOPAY AI ENGINEER",
-  headline: "생성형 AI 리더 & 크리에이터",
+  title: "카카오페이 AI 개발자",
+  headline: "카카오페이 생성형 AI 개발을 담당하고 있습니다",
   about: [
-    "다년간 광고와 커리어를 위한 AI 솔루션을 개발합니다.",
-    "메타(페이스북)에서 AI 기반 인스타그램 광고 프로젝트에 기여하고 있습니다.",
-    "최신 AI 기술과 대규모 언어 모델을 활용하여 혁신적인 솔루션을 제공합니다."
+    "안녕하세요, 카카오페이에서 생성형 AI 개발을 담당하고 있는 이봉기입니다. 사용자 경험 중심의 AI 솔루션을 개발하는 것을 좋아합니다.",
+    "복잡한 문제를 해결하는 것과 새로운 기술을 탐구하는 것을 즐깁니다. 특히 자연어 처리와 대화형 AI 시스템에 관심이 많습니다.",
+    "오픈 소스 커뮤니티에 기여하고, 기술 블로그에 글을 작성하며 지식을 공유하고 있습니다."
   ],
   education: [
-    "서울대학교, 컴퓨터 공학 석사 (2016-2018)",
-    "한국과학기술원(KAIST), 전산학과 학사 (2012-2016)"
+    "카이스트 인공지능대학원, 석사 (2018-2020)",
+    "서울대학교 컴퓨터공학과, 학사 (2014-2018)"
   ],
   experience: [
-    "카카오페이, 생성형 AI 개발자 (2023-현재)",
-    "메타(페이스북), 소프트웨어 엔지니어 - Instagram Ads 팀 (2018-2023)"
+    "카카오페이, 생성형 AI 개발자 (2021-현재)",
+    "네이버, 머신러닝 엔지니어 (2020-2021)"
   ],
+  resumeUrl: "https://example.com/resume.pdf",
+  portfolioUrl: "https://github.com/bongkilee",
   email: "bongki.lee@kakaopay.com",
   phone: "010-9876-5432",
   location: "서울, 대한민국",
   socialLinks: [
     {
-      platform: "LinkedIn",
-      url: "https://linkedin.com/in/bongkilee",
-      icon: "fab fa-linkedin-in"
-    },
-    {
       platform: "GitHub",
       url: "https://github.com/bongkilee",
       icon: "fab fa-github"
+    },
+    {
+      platform: "LinkedIn",
+      url: "https://linkedin.com/in/bongkilee",
+      icon: "fab fa-linkedin-in"
     },
     {
       platform: "Twitter",
@@ -38,16 +40,16 @@ export const userData: UserData = {
     }
   ],
   designSkills: [
-    { name: "시스템 아키텍처", level: 95 },
-    { name: "UX 리서치", level: 80 },
-    { name: "데이터 시각화", level: 85 },
-    { name: "API 디자인", level: 90 }
+    { name: "AI 시스템 설계", level: 95 },
+    { name: "데이터 파이프라인 설계", level: 90 },
+    { name: "UX/UI 디자인", level: 80 },
+    { name: "서비스 아키텍처 설계", level: 85 }
   ],
   technicalSkills: [
     { name: "Python", level: 95 },
     { name: "TensorFlow/PyTorch", level: 90 },
-    { name: "React/TypeScript", level: 85 },
-    { name: "GPT/LLM 개발", level: 95 },
+    { name: "JavaScript/TypeScript", level: 85 },
+    { name: "NLP & 생성형 AI", level: 95 },
     { name: "Go", level: 80 },
     { name: "Kubernetes", level: 75 }
   ],
@@ -56,6 +58,7 @@ export const userData: UserData = {
     { name: "TensorFlow", icon: "fas fa-brain" },
     { name: "PyTorch", icon: "fas fa-fire" },
     { name: "React", icon: "fab fa-react" },
+    { name: "Node.js", icon: "fab fa-node-js" },
     { name: "TypeScript", icon: "fab fa-js" },
     { name: "Docker", icon: "fab fa-docker" },
     { name: "Kubernetes", icon: "fas fa-dharmachakra" },
@@ -64,28 +67,28 @@ export const userData: UserData = {
   ],
   projects: [
     {
-      title: "비밀 프로젝트 #1",
-      description: "생성형 AI를 활용한 차세대 인스타그램 광고 시스템 (자세한 내용은 비공개)",
-      categories: ["생성형 AI", "광고 시스템"],
-      state: "Coming Soon"
-    },
-    {
-      title: "비밀 프로젝트 #2",
-      description: "개인화된 자기개발을 위한 AI 기반 솔루션 개발 중",
-      categories: ["AI 코칭", "머신러닝"],
+      title: "KakaoPay 챗봇 어시스턴트",
+      description: "카카오페이 금융 서비스를 위한 AI 기반 챗봇 시스템으로, 고객 문의에 실시간으로 대응하고 간단한 금융 거래를 도움",
+      categories: ["생성형 AI", "자연어 처리", "금융 기술"],
       state: "개발 진행 중"
     },
     {
-      title: "비밀 프로젝트 #3",
-      description: "대규모 언어 모델을 활용한 챗봇 서비스 개발 및 배포",
-      categories: ["LLM", "챗봇"],
+      title: "송금 패턴 분석 시스템",
+      description: "사용자의 송금 패턴을 분석하여 이상 거래를 탐지하고 개인화된 송금 추천을 제공하는 머신러닝 시스템",
+      categories: ["데이터 분석", "머신러닝", "보안"],
       state: "알파 테스트 중"
     },
     {
-      title: "비밀 프로젝트 #4",
-      description: "AI 기반 스센드 콘텐츠 분석 솔루션",
-      categories: ["AI", "컨텐츠 분석"],
+      title: "금융 문서 자동 요약 API",
+      description: "복잡한 금융 문서와 계약서를 자동으로 분석하고 핵심 내용을 요약해주는 NLP 기반 API 서비스",
+      categories: ["NLP", "API 개발", "문서 분석"],
       state: "2025 출시 예정"
+    },
+    {
+      title: "오픈소스 AI 모델 컨트리뷰션",
+      description: "한국어 특화 금융 대화 모델 개발과 관련 오픈소스 프로젝트에 기여한 내용",
+      categories: ["오픈소스", "LLM", "한국어 NLP"],
+      state: "Coming Soon"
     }
   ]
 };
