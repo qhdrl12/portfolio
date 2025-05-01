@@ -144,27 +144,6 @@ const ProjectsSection = () => {
             <ProjectCard key={index} project={project} index={index} />
           ))}
         </div>
-        
-        <div className="mt-20 flex flex-col md:flex-row items-center justify-center gap-8 bg-[#151515]/80 backdrop-blur-sm border border-[#333]/40 rounded-xl p-8">
-          <div className="md:w-2/3">
-            <h3 className="font-display text-2xl font-bold text-white mb-4">더 많은 오픈 소스 프로젝트</h3>
-            <p className="text-white/70">
-              GitHub에서 제가 기여한 오픈 소스 프로젝트와 개인 토이 프로젝트를 확인하실 수 있습니다.
-              LangChain, Hugging Face 라이브러리 등에 기여했습니다.
-            </p>
-          </div>
-          
-          <div className="md:w-1/3 flex justify-center">
-            <a 
-              href={userData.socialLinks.find(social => social.platform === "GitHub")?.url || "#"} 
-              className="inline-block px-8 py-3 bg-[#1E1E1E] border border-[#333] text-white font-sans font-medium rounded-md hover:border-[#4D8CFF]/50 transition-all duration-300"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <i className="fab fa-github mr-2"></i> GitHub 방문하기
-            </a>
-          </div>
-        </div>
       </div>
     </section>
   );
