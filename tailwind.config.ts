@@ -6,8 +6,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Inter", "sans-serif"],
-        display: ["Playfair Display", "serif"],
+        sans: ["Noto Sans KR", "sans-serif"],
+        display: ["Noto Sans KR", "sans-serif"],
       },
       borderRadius: {
         lg: "var(--radius)",
