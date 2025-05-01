@@ -21,7 +21,7 @@ const HeroSection = () => {
               </div>
             </div>
 
-            <h1 className="font-display text-5xl font-bold text-white mb-6 glow-text">
+            <h1 className="font-display text-5xl font-bold text-white mb-6">
               안녕하세요,<br />
               저는 <span className="text-[#4D8CFF]">이봉기</span>입니다
             </h1>
@@ -87,23 +87,6 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <div className="relative w-full max-w-md mx-auto">
-              {/* 여러 기술 스택 키워드 */}
-              <div className="absolute -top-10 -left-10 md:-left-20 text-[10px] md:text-xs text-white/40 bg-[#1E1E1E]/50 px-3 py-1 rounded-full border border-[#333]/40">
-                Python
-              </div>
-              <div className="absolute -top-5 left-1/4 text-[10px] md:text-xs text-white/40 bg-[#1E1E1E]/50 px-3 py-1 rounded-full border border-[#333]/40">
-                LangChain
-              </div>
-              <div className="absolute top-0 right-0 md:right-10 text-[10px] md:text-xs text-white/40 bg-[#1E1E1E]/50 px-3 py-1 rounded-full border border-[#333]/40">
-                PyTorch
-              </div>
-              <div className="absolute bottom-10 -right-5 md:-right-10 text-[10px] md:text-xs text-white/40 bg-[#1E1E1E]/50 px-3 py-1 rounded-full border border-[#333]/40">
-                TensorFlow
-              </div>
-              <div className="absolute -bottom-5 right-1/3 text-[10px] md:text-xs text-white/40 bg-[#1E1E1E]/50 px-3 py-1 rounded-full border border-[#333]/40">
-                GPT & LLM
-              </div>
-              
               {/* 배경 장식 */}
               <div className="absolute inset-0 bg-gradient-to-r from-[#4D8CFF]/20 to-[#7B5FFF]/20 rounded-lg blur-xl"></div>
               

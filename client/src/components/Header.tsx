@@ -28,14 +28,8 @@ const Header = () => {
     <header className={`fixed w-full bg-[#121212]/80 backdrop-blur-md z-50 transition-all duration-300 ${scrolled ? 'shadow-md shadow-black/30' : ''}`}>
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <a href="#home" className="text-white font-display text-xl md:text-2xl font-bold flex items-center">
-            <span className="text-[#4D8CFF] mr-1">이봉기</span>
-            <span className="opacity-70 text-base mx-1">|</span>
-            <span className="opacity-90 text-sm font-medium tracking-wide flex items-center">
-              <span className="hidden sm:inline-block">카카오페이</span>
-              <span className="sm:mx-1.5 mx-1 opacity-50">·</span>
-              <span className="text-white/90">AI 개발자</span>
-            </span>
+          <a href="#home" className="text-white font-display text-xl md:text-2xl font-bold">
+            <span className="text-[#4D8CFF]">포트폴리오</span>
           </a>
           
           {/* 데스크톱 네비게이션 */}
