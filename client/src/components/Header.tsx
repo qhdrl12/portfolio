@@ -8,7 +8,7 @@ const Header = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
-  // Handle scroll effect for header
+  // 헤더 스크롤 효과 처리
   useEffect(() => {
     const handleScroll = () => {
       const isScrolled = window.scrollY > 10;
@@ -28,38 +28,38 @@ const Header = () => {
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <a href="#home" className="text-[#3D405B] font-display text-2xl font-bold">
-            <span className="text-[#E07A5F]">Port</span>folio
+            <span className="text-[#E07A5F]">포트</span>폴리오
           </a>
           
-          {/* Desktop Navigation */}
+          {/* 데스크톱 네비게이션 */}
           <nav className="hidden md:block">
             <ul className="flex space-x-8">
-              <li><a href="#home" className="nav-link font-sans text-[#3D405B] hover:text-[#E07A5F] transition-colors duration-300">Home</a></li>
-              <li><a href="#about" className="nav-link font-sans text-[#3D405B] hover:text-[#E07A5F] transition-colors duration-300">About</a></li>
-              <li><a href="#projects" className="nav-link font-sans text-[#3D405B] hover:text-[#E07A5F] transition-colors duration-300">Projects</a></li>
-              <li><a href="#skills" className="nav-link font-sans text-[#3D405B] hover:text-[#E07A5F] transition-colors duration-300">Skills</a></li>
-              <li><a href="#contact" className="nav-link font-sans text-[#3D405B] hover:text-[#E07A5F] transition-colors duration-300">Contact</a></li>
+              <li><a href="#home" className="nav-link font-sans text-[#3D405B] hover:text-[#E07A5F] transition-colors duration-300">홈</a></li>
+              <li><a href="#about" className="nav-link font-sans text-[#3D405B] hover:text-[#E07A5F] transition-colors duration-300">소개</a></li>
+              <li><a href="#projects" className="nav-link font-sans text-[#3D405B] hover:text-[#E07A5F] transition-colors duration-300">프로젝트</a></li>
+              <li><a href="#skills" className="nav-link font-sans text-[#3D405B] hover:text-[#E07A5F] transition-colors duration-300">기술</a></li>
+              <li><a href="#contact" className="nav-link font-sans text-[#3D405B] hover:text-[#E07A5F] transition-colors duration-300">연락처</a></li>
             </ul>
           </nav>
           
-          {/* Mobile Menu Button */}
+          {/* 모바일 메뉴 버튼 */}
           <button 
             className="md:hidden text-[#3D405B] hover:text-[#E07A5F]" 
             onClick={toggleMobileMenu}
-            aria-label="Toggle Menu"
+            aria-label="메뉴 토글"
           >
             <i className="fas fa-bars text-xl"></i>
           </button>
         </div>
         
-        {/* Mobile Navigation */}
+        {/* 모바일 네비게이션 */}
         <nav className={`md:hidden mt-4 pb-2 transition-all duration-300 ${mobileMenuOpen ? 'block' : 'hidden'}`}>
           <ul className="flex flex-col space-y-4">
-            <li><a href="#home" className="block py-2 nav-link font-sans text-[#3D405B] hover:text-[#E07A5F] transition-colors duration-300" onClick={() => setMobileMenuOpen(false)}>Home</a></li>
-            <li><a href="#about" className="block py-2 nav-link font-sans text-[#3D405B] hover:text-[#E07A5F] transition-colors duration-300" onClick={() => setMobileMenuOpen(false)}>About</a></li>
-            <li><a href="#projects" className="block py-2 nav-link font-sans text-[#3D405B] hover:text-[#E07A5F] transition-colors duration-300" onClick={() => setMobileMenuOpen(false)}>Projects</a></li>
-            <li><a href="#skills" className="block py-2 nav-link font-sans text-[#3D405B] hover:text-[#E07A5F] transition-colors duration-300" onClick={() => setMobileMenuOpen(false)}>Skills</a></li>
-            <li><a href="#contact" className="block py-2 nav-link font-sans text-[#3D405B] hover:text-[#E07A5F] transition-colors duration-300" onClick={() => setMobileMenuOpen(false)}>Contact</a></li>
+            <li><a href="#home" className="block py-2 nav-link font-sans text-[#3D405B] hover:text-[#E07A5F] transition-colors duration-300" onClick={() => setMobileMenuOpen(false)}>홈</a></li>
+            <li><a href="#about" className="block py-2 nav-link font-sans text-[#3D405B] hover:text-[#E07A5F] transition-colors duration-300" onClick={() => setMobileMenuOpen(false)}>소개</a></li>
+            <li><a href="#projects" className="block py-2 nav-link font-sans text-[#3D405B] hover:text-[#E07A5F] transition-colors duration-300" onClick={() => setMobileMenuOpen(false)}>프로젝트</a></li>
+            <li><a href="#skills" className="block py-2 nav-link font-sans text-[#3D405B] hover:text-[#E07A5F] transition-colors duration-300" onClick={() => setMobileMenuOpen(false)}>기술</a></li>
+            <li><a href="#contact" className="block py-2 nav-link font-sans text-[#3D405B] hover:text-[#E07A5F] transition-colors duration-300" onClick={() => setMobileMenuOpen(false)}>연락처</a></li>
           </ul>
         </nav>
       </div>

@@ -6,11 +6,11 @@ const ProjectsSection = () => {
     <section id="projects" className="py-20 bg-[#F4F1DE]/50 section-fade-in">
       <div className="container mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-[#3D405B] mb-6">My Projects</h2>
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-[#3D405B] mb-6">프로젝트</h2>
           <div className="h-1 w-20 bg-[#E07A5F] mb-8 mx-auto"></div>
           <p className="font-sans text-[#333333]/80 leading-relaxed">
-            Here's a selection of my recent work. Each project represents a unique challenge
-            and showcases different aspects of my design philosophy.
+            제가 최근에 작업한 프로젝트들입니다. 각 프로젝트는 고유한 도전을 나타내며
+            제 디자인 철학의 다양한 측면을 보여줍니다.
           </p>
         </div>
         
@@ -33,7 +33,7 @@ const ProjectsSection = () => {
                   />
                 ) : (
                   <div className="w-full h-full bg-gradient-to-r from-[#E07A5F]/20 to-[#F2CC8F]/20 flex items-center justify-center">
-                    <span className="text-[#3D405B] font-medium">Project Image</span>
+                    <span className="text-[#3D405B] font-medium">프로젝트 이미지</span>
                   </div>
                 )}
               </div>
@@ -48,7 +48,7 @@ const ProjectsSection = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <span>View Details</span>
+                    <span>자세히 보기</span>
                     <i className="fas fa-arrow-right ml-2 text-sm"></i>
                   </a>
                 )}
@@ -65,7 +65,7 @@ const ProjectsSection = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              View All Projects
+              모든 프로젝트 보기
             </a>
           </div>
         )}
