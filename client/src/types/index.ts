@@ -20,6 +20,7 @@ export interface Project {
   imageUrl?: string;
   categories: string[];
   link?: string;
+  state?: string;
 }
 
 export interface ContactMessage {
@@ -31,6 +32,7 @@ export interface ContactMessage {
 
 export interface UserData {
   name: string;
+  title?: string;
   headline: string;
   portraitUrl?: string;
   about: string[];

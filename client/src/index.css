@@ -3,69 +3,47 @@
 @tailwind utilities;
 
 :root {
-  --background: 0 0% 100%;
-  --foreground: 20 14.3% 4.1%;
-  --muted: 60 4.8% 95.9%;
-  --muted-foreground: 25 5.3% 44.7%;
-  --popover: 0 0% 100%;
-  --popover-foreground: 20 14.3% 4.1%;
-  --card: 0 0% 100%;
-  --card-foreground: 20 14.3% 4.1%;
-  --border: 20 5.9% 90%;
-  --input: 20 5.9% 90%;
-  --primary: 12 75% 61%;
-  --primary-foreground: 211 100% 99%;
-  --secondary: 41 86% 75%;
-  --secondary-foreground: 24 9.8% 10%;
-  --accent: 229 22% 30%;
-  --accent-foreground: 0 0% 98%;
+  /* Dark theme colors for tech portfolio */
+  --background: 220 13% 9%;
+  --foreground: 0 0% 98%;
+  --muted: 220 10% 15%;
+  --muted-foreground: 220 10% 65%;
+  --popover: 220 15% 8%;
+  --popover-foreground: 0 0% 98%;
+  --card: 220 15% 12%;
+  --card-foreground: 0 0% 98%;
+  --border: 220 10% 20%;
+  --input: 220 10% 15%;
+  --primary: 210 100% 55%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 160 84% 39%;
+  --secondary-foreground: 0 0% 100%;
+  --accent: 240 100% 70%;
+  --accent-foreground: 0 0% 100%;
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 60 9.1% 97.8%;
-  --ring: 20 14.3% 4.1%;
+  --ring: 220 60% 50%;
   --radius: 0.5rem;
-  --chart-1: 12 75% 61%;
-  --chart-2: 41 86% 75%;
-  --chart-3: 229 22% 30%;
-  --chart-4: 42 38% 94%;
-  --chart-5: 0 0% 20%;
-  --sidebar-background: 229 22% 30%;
+  --chart-1: 210 100% 55%;
+  --chart-2: 160 84% 39%;
+  --chart-3: 240 100% 70%;
+  --chart-4: 280 85% 65%;
+  --chart-5: 340 80% 65%;
+  --sidebar-background: 220 13% 9%;
   --sidebar-foreground: 0 0% 98%;
-  --sidebar-primary: 12 75% 61%;
+  --sidebar-primary: 210 100% 55%;
   --sidebar-primary-foreground: 0 0% 100%;
-  --sidebar-accent: 41 86% 75%;
-  --sidebar-accent-foreground: 24 9.8% 10%;
-  --sidebar-border: 229 15% 40%;
-  --sidebar-ring: 229 22% 30%;
+  --sidebar-accent: 240 100% 70%;
+  --sidebar-accent-foreground: 0 0% 100%;
+  --sidebar-border: 220 10% 20%;
+  --sidebar-ring: 220 60% 50%;
 
   /* Portfolio specific variables */
-  --portfolio-primary: 12 75% 61%;
-  --portfolio-secondary: 41 86% 75%;
-  --portfolio-accent: 229 22% 30%;
-  --portfolio-neutral: 42 38% 94%;
-  --portfolio-dark: 0 0% 20%;
-}
-
-.dark {
-  --background: 240 10% 3.9%;
-  --foreground: 0 0% 98%;
-  --muted: 240 3.7% 15.9%;
-  --muted-foreground: 240 5% 64.9%;
-  --popover: 240 10% 3.9%;
-  --popover-foreground: 0 0% 98%;
-  --card: 240 10% 3.9%;
-  --card-foreground: 0 0% 98%;
-  --border: 240 3.7% 15.9%;
-  --input: 240 3.7% 15.9%;
-  --primary: 12 75% 61%;
-  --primary-foreground: 211 100% 99%;
-  --secondary: 41 86% 75%;
-  --secondary-foreground: 0 0% 98%;
-  --accent: 229 22% 30%;
-  --accent-foreground: 0 0% 98%;
-  --destructive: 0 62.8% 30.6%;
-  --destructive-foreground: 0 0% 98%;
-  --ring: 240 4.9% 83.9%;
-  --radius: 0.5rem;
+  --portfolio-primary: 210 100% 55%;
+  --portfolio-secondary: 160 84% 39%;
+  --portfolio-accent: 240 100% 70%;
+  --portfolio-neutral: 220 10% 15%;
+  --portfolio-light: 220 10% 85%;
 }
 
 @layer base {
@@ -74,8 +52,10 @@
   }
 
   body {
-    @apply font-sans antialiased bg-[#F4F1DE] text-[#333333];
+    @apply font-sans antialiased bg-[#121212] text-white;
     scroll-behavior: smooth;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 800 800'%3E%3Cg fill='none' stroke='%23232323' stroke-width='1'%3E%3Cpath d='M769 229L1037 260.9M927 880L731 737 520 660 309 538 40 599 295 764 126.5 879.5 40 599-197 493 102 382-31 229 126.5 79.5-69-63'/%3E%3Cpath d='M-31 229L237 261 390 382 603 493 308.5 537.5 101.5 381.5M370 905L295 764'/%3E%3Cpath d='M520 660L578 842 731 737 840 599 603 493 520 660 295 764 309 538 390 382 539 269 769 229 577.5 41.5 370 105 295 -36 126.5 79.5 237 261 102 382 40 599 -69 737 127 880'/%3E%3Cpath d='M520-140L578.5 42.5 731-63M603 493L539 269 237 261 370 105M902 382L539 269M390 382L102 382'/%3E%3Cpath d='M-222 42L126.5 79.5 370 105 539 269 577.5 41.5 927 80 769 229 902 382 603 493 731 737M295-36L577.5 41.5M578 842L295 764M40-201L127 80M102 382L-261 269'/%3E%3C/g%3E%3Cg fill='%23434343'%3E%3Ccircle cx='769' cy='229' r='5'/%3E%3Ccircle cx='539' cy='269' r='5'/%3E%3Ccircle cx='603' cy='493' r='5'/%3E%3Ccircle cx='731' cy='737' r='5'/%3E%3Ccircle cx='520' cy='660' r='5'/%3E%3Ccircle cx='309' cy='538' r='5'/%3E%3Ccircle cx='295' cy='764' r='5'/%3E%3Ccircle cx='40' cy='599' r='5'/%3E%3Ccircle cx='102' cy='382' r='5'/%3E%3Ccircle cx='127' cy='80' r='5'/%3E%3Ccircle cx='370' cy='105' r='5'/%3E%3Ccircle cx='578' cy='42' r='5'/%3E%3Ccircle cx='237' cy='261' r='5'/%3E%3Ccircle cx='390' cy='382' r='5'/%3E%3C/g%3E%3C/svg%3E");
+    background-attachment: fixed;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -90,7 +70,7 @@
 
   .nav-link::after {
     content: '';
-    @apply absolute w-0 h-0.5 bottom-[-4px] left-0 bg-[#E07A5F] transition-all duration-300 ease-in-out;
+    @apply absolute w-0 h-0.5 bottom-[-4px] left-0 bg-[#4D8CFF] transition-all duration-300 ease-in-out;
   }
 
   .nav-link:hover::after,
@@ -110,20 +90,37 @@
   }
 
   .project-card {
-    @apply transition-all duration-300;
+    @apply transition-all duration-300 border border-[#333333]/40 bg-[#1E1E1E]/80 backdrop-blur-sm;
   }
 
   .project-card:hover {
     transform: translateY(-5px);
-    @apply shadow-lg;
+    @apply shadow-lg shadow-[#4D8CFF]/20 border-[#4D8CFF]/50;
   }
   
   .progress-bar {
-    @apply relative h-1.5 rounded-sm bg-[#E07A5F]/20;
+    @apply relative h-1.5 rounded-sm bg-[#333333];
   }
   
   .progress-bar::after {
     content: "";
-    @apply absolute top-0 left-0 h-full rounded-sm bg-[#E07A5F] transition-all duration-1000 ease-in-out;
+    @apply absolute top-0 left-0 h-full rounded-sm bg-[#4D8CFF] transition-all duration-1000 ease-in-out;
+  }
+
+  .tech-icon {
+    @apply border border-[#333333]/80 bg-[#1E1E1E]/90 hover:border-[#4D8CFF]/60 hover:bg-[#131313] transition-all duration-300;
+  }
+
+  .glow-text {
+    text-shadow: 0 0 10px rgba(77, 140, 255, 0.5);
+  }
+
+  .dot-pattern {
+    background-image: radial-gradient(rgba(77, 140, 255, 0.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+  }
+  
+  .blue-glow {
+    box-shadow: 0 0 15px rgba(77, 140, 255, 0.3);
   }
 }

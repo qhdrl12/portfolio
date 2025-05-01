@@ -24,27 +24,33 @@ const Header = () => {
   }, [scrolled]);
 
   return (
-    <header className={`fixed w-full bg-[#F4F1DE]/90 backdrop-blur-sm z-50 transition-all duration-300 ${scrolled ? 'shadow-sm' : ''}`}>
+    <header className={`fixed w-full bg-[#121212]/80 backdrop-blur-md z-50 transition-all duration-300 ${scrolled ? 'shadow-md shadow-black/30' : ''}`}>
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <a href="#home" className="text-[#3D405B] font-display text-2xl font-bold">
-            <span className="text-[#E07A5F]">포트</span>폴리오
+          <a href="#home" className="text-white font-display text-2xl font-bold flex items-center">
+            <span className="text-[#4D8CFF] mr-1">알렉스</span>
+            <span className="opacity-70 text-base">|</span>
+            <span className="ml-2 opacity-90 text-sm font-medium tracking-wide">
+              <span className="hidden sm:inline-block">카카오페이</span>
+              <span className="inline-block sm:hidden">|</span>
+              <span className="text-[#4D8CFF] ml-1">AI</span>
+            </span>
           </a>
           
           {/* 데스크톱 네비게이션 */}
           <nav className="hidden md:block">
             <ul className="flex space-x-8">
-              <li><a href="#home" className="nav-link font-sans text-[#3D405B] hover:text-[#E07A5F] transition-colors duration-300">홈</a></li>
-              <li><a href="#about" className="nav-link font-sans text-[#3D405B] hover:text-[#E07A5F] transition-colors duration-300">소개</a></li>
-              <li><a href="#projects" className="nav-link font-sans text-[#3D405B] hover:text-[#E07A5F] transition-colors duration-300">프로젝트</a></li>
-              <li><a href="#skills" className="nav-link font-sans text-[#3D405B] hover:text-[#E07A5F] transition-colors duration-300">기술</a></li>
-              <li><a href="#contact" className="nav-link font-sans text-[#3D405B] hover:text-[#E07A5F] transition-colors duration-300">연락처</a></li>
+              <li><a href="#home" className="nav-link font-sans text-white hover:text-[#4D8CFF] transition-colors duration-300">홈</a></li>
+              <li><a href="#about" className="nav-link font-sans text-white hover:text-[#4D8CFF] transition-colors duration-300">소개</a></li>
+              <li><a href="#projects" className="nav-link font-sans text-white hover:text-[#4D8CFF] transition-colors duration-300">프로젝트</a></li>
+              <li><a href="#skills" className="nav-link font-sans text-white hover:text-[#4D8CFF] transition-colors duration-300">기술</a></li>
+              <li><a href="#contact" className="nav-link font-sans text-white hover:text-[#4D8CFF] transition-colors duration-300">연락처</a></li>
             </ul>
           </nav>
           
           {/* 모바일 메뉴 버튼 */}
           <button 
-            className="md:hidden text-[#3D405B] hover:text-[#E07A5F]" 
+            className="md:hidden text-white hover:text-[#4D8CFF]" 
             onClick={toggleMobileMenu}
             aria-label="메뉴 토글"
           >
@@ -55,11 +61,11 @@ const Header = () => {
         {/* 모바일 네비게이션 */}
         <nav className={`md:hidden mt-4 pb-2 transition-all duration-300 ${mobileMenuOpen ? 'block' : 'hidden'}`}>
           <ul className="flex flex-col space-y-4">
-            <li><a href="#home" className="block py-2 nav-link font-sans text-[#3D405B] hover:text-[#E07A5F] transition-colors duration-300" onClick={() => setMobileMenuOpen(false)}>홈</a></li>
-            <li><a href="#about" className="block py-2 nav-link font-sans text-[#3D405B] hover:text-[#E07A5F] transition-colors duration-300" onClick={() => setMobileMenuOpen(false)}>소개</a></li>
-            <li><a href="#projects" className="block py-2 nav-link font-sans text-[#3D405B] hover:text-[#E07A5F] transition-colors duration-300" onClick={() => setMobileMenuOpen(false)}>프로젝트</a></li>
-            <li><a href="#skills" className="block py-2 nav-link font-sans text-[#3D405B] hover:text-[#E07A5F] transition-colors duration-300" onClick={() => setMobileMenuOpen(false)}>기술</a></li>
-            <li><a href="#contact" className="block py-2 nav-link font-sans text-[#3D405B] hover:text-[#E07A5F] transition-colors duration-300" onClick={() => setMobileMenuOpen(false)}>연락처</a></li>
+            <li><a href="#home" className="block py-2 nav-link font-sans text-white hover:text-[#4D8CFF] transition-colors duration-300" onClick={() => setMobileMenuOpen(false)}>홈</a></li>
+            <li><a href="#about" className="block py-2 nav-link font-sans text-white hover:text-[#4D8CFF] transition-colors duration-300" onClick={() => setMobileMenuOpen(false)}>소개</a></li>
+            <li><a href="#projects" className="block py-2 nav-link font-sans text-white hover:text-[#4D8CFF] transition-colors duration-300" onClick={() => setMobileMenuOpen(false)}>프로젝트</a></li>
+            <li><a href="#skills" className="block py-2 nav-link font-sans text-white hover:text-[#4D8CFF] transition-colors duration-300" onClick={() => setMobileMenuOpen(false)}>기술</a></li>
+            <li><a href="#contact" className="block py-2 nav-link font-sans text-white hover:text-[#4D8CFF] transition-colors duration-300" onClick={() => setMobileMenuOpen(false)}>연락처</a></li>
           </ul>
         </nav>
       </div>

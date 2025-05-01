@@ -1,125 +1,133 @@
 import { motion } from "framer-motion";
 import { userData } from "@/data/portfolio";
 
-const SkillCard = ({ name, icon, category }: { name: string, icon: string, category: string }) => {
-  const bgColor = category === "design" ? "bg-[#F4F1DE]" : category === "technical" ? "bg-[#E07A5F]/10" : "bg-[#3D405B]/10";
-  const iconColor = category === "design" ? "text-[#E07A5F]" : category === "technical" ? "text-[#3D405B]" : "text-[#F2CC8F]";
-  
+const SkillBar = ({ name, level, index }: { name: string, level: number, index: number }) => {
+  // 기술 레벨에 따라 색상 설정
+  const getColorForLevel = () => {
+    if (level >= 90) return "bg-gradient-to-r from-[#4D8CFF] to-[#7B5FFF]";
+    if (level >= 80) return "bg-[#4D8CFF]";
+    if (level >= 70) return "bg-[#5AC8FA]";
+    return "bg-[#4CD964]";
+  };
+
   return (
     <motion.div 
-      className="text-center"
+      className="mb-6"
+      initial={{ opacity: 0, x: -20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+    >
+      <div className="flex justify-between mb-2">
+        <span className="font-sans font-medium text-white">{name}</span>
+        <span className="font-sans text-sm text-white/60">{level}%</span>
+      </div>
+      <div className="h-2 w-full bg-[#333] rounded-full overflow-hidden">
+        <motion.div 
+          className={`h-full ${getColorForLevel()} rounded-full`}
+          initial={{ width: 0 }}
+          animate={{ width: `${level}%` }}
+          transition={{ duration: 1, delay: index * 0.1 + 0.3 }}
+        />
+      </div>
+    </motion.div>
+  );
+};
+
+const TechIcon = ({ name, icon, index }: { name: string, icon: string, index: number }) => {
+  return (
+    <motion.div 
+      className="flex flex-col items-center"
       whileHover={{ y: -5, scale: 1.05 }}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3 }}
+      transition={{ duration: 0.3, delay: index * 0.05 }}
     >
-      <div className={`w-20 h-20 md:w-24 md:h-24 ${bgColor} rounded-xl flex items-center justify-center shadow-sm mb-3 mx-auto`}>
-        <i className={`${icon} text-2xl md:text-4xl ${iconColor}`}></i>
+      <div className="tech-icon w-16 h-16 md:w-20 md:h-20 rounded-xl flex items-center justify-center shadow-sm mb-3 mx-auto">
+        <i className={`${icon} text-2xl md:text-3xl text-[#4D8CFF]`}></i>
       </div>
-      <span className="font-sans text-sm font-medium text-[#333333]/80">{name}</span>
+      <span className="font-sans text-sm font-medium text-white/70">{name}</span>
     </motion.div>
   );
 };
 
 const SkillsSection = () => {
-  // 디자인 스킬을 아이콘 형태로 변환
-  const designSkillsWithIcons = userData.designSkills.map(skill => {
-    // 스킬 이름에 따라 적절한 아이콘 할당
-    let icon = "";
-    if (skill.name.includes("UI/UX")) {
-      icon = "fas fa-pencil-ruler";
-    } else if (skill.name.includes("시각")) {
-      icon = "fas fa-eye";
-    } else if (skill.name.includes("브랜드")) {
-      icon = "fas fa-copyright";
-    } else if (skill.name.includes("와이어프레임")) {
-      icon = "fas fa-object-group";
-    } else {
-      icon = "fas fa-paint-brush";
-    }
-    
-    return {
-      name: skill.name,
-      icon: icon
-    };
-  });
-  
-  // 기술 스킬을 아이콘 형태로 변환
-  const technicalSkillsWithIcons = userData.technicalSkills.map(skill => {
-    // 스킬 이름에 따라 적절한 아이콘 할당
-    let icon = "";
-    if (skill.name.includes("HTML")) {
-      icon = "fab fa-html5";
-    } else if (skill.name.includes("JavaScript")) {
-      icon = "fab fa-js";
-    } else if (skill.name.includes("React")) {
-      icon = "fab fa-react";
-    } else if (skill.name.includes("Figma")) {
-      icon = "fab fa-figma";
-    } else {
-      icon = "fas fa-code";
-    }
-    
-    return {
-      name: skill.name,
-      icon: icon
-    };
-  });
-
   return (
-    <section id="skills" className="py-20 bg-white section-fade-in">
+    <section id="skills" className="py-20 section-fade-in">
       <div className="container mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-[#3D405B] mb-6">기술 스택</h2>
-          <div className="h-1 w-20 bg-[#E07A5F] mb-8 mx-auto"></div>
-          <p className="font-sans text-[#333333]/80 leading-relaxed">
-            제가 사용하는 다양한 기술과 도구들입니다. 꾸준한 학습과 프로젝트 경험을 통해 다양한 전문 기술을 갖추고 있습니다.
+          <div className="inline-block mb-4 rounded-full px-3 py-1 text-xs font-medium bg-[#4D8CFF]/10 text-[#4D8CFF]">
+            기술 & 역량
+          </div>
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-4">기술 스택</h2>
+          <div className="h-1 w-20 bg-[#4D8CFF] mb-8 mx-auto"></div>
+          <p className="font-sans text-white/70 leading-relaxed">
+            생성형 AI 개발 및 ML 솔루션에 특화된 최신 기술 스택과 프로그래밍 언어를 사용합니다.
           </p>
         </div>
         
         <div className="max-w-5xl mx-auto">
-          <div className="mb-16">
-            <h3 className="font-display text-2xl font-semibold text-[#3D405B] mb-8 text-center">디자인 스킬</h3>
-            
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 md:gap-8">
-              {designSkillsWithIcons.map((skill, index) => (
-                <SkillCard 
-                  key={`design-${index}`} 
-                  name={skill.name} 
-                  icon={skill.icon}
-                  category="design"
-                />
-              ))}
-            </div>
-          </div>
-          
-          <div className="mb-16">
-            <h3 className="font-display text-2xl font-semibold text-[#3D405B] mb-8 text-center">기술 스킬</h3>
-            
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 md:gap-8">
-              {technicalSkillsWithIcons.map((skill, index) => (
-                <SkillCard 
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-16">
+            <div className="bg-[#151515]/80 backdrop-blur-sm border border-[#333]/40 rounded-xl p-8">
+              <h3 className="font-display text-xl font-bold text-[#4D8CFF] mb-8">핵심 기술</h3>
+              
+              {userData.technicalSkills.map((skill, index) => (
+                <SkillBar 
                   key={`tech-${index}`} 
                   name={skill.name} 
-                  icon={skill.icon}
-                  category="technical"
+                  level={skill.level}
+                  index={index}
+                />
+              ))}
+            </div>
+            
+            <div className="bg-[#151515]/80 backdrop-blur-sm border border-[#333]/40 rounded-xl p-8">
+              <h3 className="font-display text-xl font-bold text-[#7B5FFF] mb-8">시스템 설계</h3>
+              
+              {userData.designSkills.map((skill, index) => (
+                <SkillBar 
+                  key={`design-${index}`} 
+                  name={skill.name} 
+                  level={skill.level}
+                  index={index}
                 />
               ))}
             </div>
           </div>
           
-          <div>
-            <h3 className="font-display text-2xl font-semibold text-[#3D405B] mb-8 text-center">사용 도구</h3>
+          <div className="bg-[#151515]/80 backdrop-blur-sm border border-[#333]/40 rounded-xl p-8 mb-10">
+            <h3 className="font-display text-xl font-bold text-white mb-8 text-center">개발 도구 & 기술</h3>
             
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 md:gap-8">
+            <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
               {userData.tools.map((tool, index) => (
-                <SkillCard 
+                <TechIcon 
                   key={`tool-${index}`} 
                   name={tool.name} 
                   icon={tool.icon}
-                  category="tool"
+                  index={index}
                 />
               ))}
+            </div>
+          </div>
+          
+          <div className="flex flex-col sm:flex-row gap-6 md:gap-8">
+            <div className="flex-1 bg-[#151515]/80 backdrop-blur-sm border border-[#333]/40 rounded-xl p-6 hover:border-[#4D8CFF]/30 transition-colors duration-300">
+              <div className="flex items-center mb-4">
+                <div className="flex-shrink-0 h-10 w-10 rounded-lg bg-[#4D8CFF]/10 flex items-center justify-center mr-4 text-[#4D8CFF]">
+                  <i className="fas fa-brain text-lg"></i>
+                </div>
+                <h4 className="text-white font-medium">AI & ML</h4>
+              </div>
+              <p className="text-white/60 text-sm">TensorFlow, PyTorch, Hugging Face, OpenAI, RAG, LLM fine-tuning, ChatGPT API, BERT, GPT, LangChain</p>
+            </div>
+            
+            <div className="flex-1 bg-[#151515]/80 backdrop-blur-sm border border-[#333]/40 rounded-xl p-6 hover:border-[#4D8CFF]/30 transition-colors duration-300">
+              <div className="flex items-center mb-4">
+                <div className="flex-shrink-0 h-10 w-10 rounded-lg bg-[#7B5FFF]/10 flex items-center justify-center mr-4 text-[#7B5FFF]">
+                  <i className="fas fa-cloud text-lg"></i>
+                </div>
+                <h4 className="text-white font-medium">클라우드 & 배포</h4>
+              </div>
+              <p className="text-white/60 text-sm">AWS, Google Cloud, Azure, Docker, Kubernetes, CI/CD, Firebase, Serverless Architecture</p>
             </div>
           </div>
         </div>
