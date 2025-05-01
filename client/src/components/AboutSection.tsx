@@ -23,16 +23,25 @@ const AboutSection = () => {
               <div className="md:w-1/3 p-8 border-r border-[#333]/40">
                 <h3 className="font-display text-xl font-bold text-[#4D8CFF] mb-6">경력 & 학력</h3>
                 
-                <div className="relative pl-8 space-y-6 before:absolute before:left-3 before:top-2 before:bottom-2 before:w-0.5 before:bg-gradient-to-b before:from-[#4D8CFF] before:to-[#7B5FFF]">
+                <div className="relative pl-8 space-y-6">
+                  {/* 타임라인 선 - 더 자연스러운 그라데이션과 선 두께 조정 */}
+                  <div className="absolute left-3 top-2 bottom-2 w-0.5 bg-gradient-to-b from-[#4D8CFF] via-[#6A74E0] to-[#7B5FFF] rounded-full opacity-80 shadow-sm"></div>
+                  
                   {userData.experience.map((exp, index) => {
                     const parts = exp.split('(');
                     const company = parts[0].trim();
                     const position = parts[1] ? parts[1].split(')')[0].trim() : '';
+                    const isLast = index === userData.experience.length - 1;
                     
                     return (
                       <div key={`exp-${index}`} className="relative">
-                        <div className="absolute left-[-29px] top-1.5 w-3 h-3 rounded-full bg-[#4D8CFF]"></div>
-                        <p className="text-[#4D8CFF] font-medium mb-1 text-sm">{position}</p>
+                        {/* 원 포인트에 그림자와 테두리 추가 */}
+                        <div className="absolute left-[-29px] top-1.5 w-3 h-3 rounded-full bg-[#4D8CFF] shadow-[0_0_8px_rgba(77,140,255,0.6)] z-10 border border-[#121212]"></div>
+                        
+                        <p className="text-[#4D8CFF] font-medium mb-1 text-sm">
+                          {position}
+                          <span className="ml-2 text-white/40 text-xs">{parts[1] ? parts[1].replace('(', '').replace(')', '') : ''}</span>
+                        </p>
                         <p className="text-sm text-white/70">{company}</p>
                       </div>
                     );
@@ -45,8 +54,13 @@ const AboutSection = () => {
                     
                     return (
                       <div key={`edu-${index}`} className="relative">
-                        <div className="absolute left-[-29px] top-1.5 w-3 h-3 rounded-full bg-[#7B5FFF]"></div>
-                        <p className="text-[#7B5FFF] font-medium mb-1 text-sm">{degree}</p>
+                        {/* 원 포인트에 그림자와 테두리 추가 */}
+                        <div className="absolute left-[-29px] top-1.5 w-3 h-3 rounded-full bg-[#7B5FFF] shadow-[0_0_8px_rgba(123,95,255,0.6)] z-10 border border-[#121212]"></div>
+                        
+                        <p className="text-[#7B5FFF] font-medium mb-1 text-sm">
+                          {degree}
+                          <span className="ml-2 text-white/40 text-xs">{parts[1] ? parts[1].replace('(', '').replace(')', '') : ''}</span>
+                        </p>
                         <p className="text-sm text-white/70">{school}</p>
                       </div>
                     );
