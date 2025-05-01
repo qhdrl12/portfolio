@@ -66,34 +66,6 @@ const SkillsSection = () => {
         </div>
         
         <div className="max-w-5xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-16">
-            <div className="bg-[#151515]/80 backdrop-blur-sm border border-[#333]/40 rounded-xl p-8">
-              <h3 className="font-display text-xl font-bold text-[#4D8CFF] mb-8">핵심 기술</h3>
-              
-              {userData.technicalSkills.map((skill, index) => (
-                <SkillBar 
-                  key={`tech-${index}`} 
-                  name={skill.name} 
-                  level={skill.level}
-                  index={index}
-                />
-              ))}
-            </div>
-            
-            <div className="bg-[#151515]/80 backdrop-blur-sm border border-[#333]/40 rounded-xl p-8">
-              <h3 className="font-display text-xl font-bold text-[#7B5FFF] mb-8">시스템 설계</h3>
-              
-              {userData.designSkills.map((skill, index) => (
-                <SkillBar 
-                  key={`design-${index}`} 
-                  name={skill.name} 
-                  level={skill.level}
-                  index={index}
-                />
-              ))}
-            </div>
-          </div>
-          
           <div className="bg-[#151515]/80 backdrop-blur-sm border border-[#333]/40 rounded-xl p-8 mb-10">
             <h3 className="font-display text-xl font-bold text-white mb-8 text-center">개발 도구 & 기술</h3>
             
