@@ -5,15 +5,9 @@ const Footer = () => {
     <footer className="bg-[#0A0A0A] text-white py-8 border-t border-[#222222]">
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-center">
-          <div className="mb-4 md:mb-0">
-            <a href="#home" className="font-display text-xl font-bold flex items-center">
-              <span className="text-[#4D8CFF] mr-1">이봉기</span>
-              <span className="text-white/60 text-sm ml-2">생성형 AI 개발자</span>
-            </a>
-          </div>
           
           <div className="font-sans text-sm text-white/60">
-            <p>&copy; {currentYear} 이봉기. 모든 권리 보유.</p>
+            <p>&copy; BongKi Lee. All rights reserved.</p>
           </div>
           
           <div className="mt-4 md:mt-0">

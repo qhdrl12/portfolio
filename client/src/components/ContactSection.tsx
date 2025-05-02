@@ -66,7 +66,7 @@ const ContactSection = () => {
           <div className="inline-block mb-4 rounded-full px-3 py-1 text-xs font-medium bg-[#4D8CFF]/10 text-[#4D8CFF]">
             연락처 & 문의
           </div>
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-4">함께 일해보세요</h2>
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-4">메세지 보내기</h2>
           <div className="h-1 w-20 bg-[#4D8CFF] mb-8 mx-auto"></div>
           <p className="font-sans text-white/70 leading-relaxed">
             AI 프로젝트 협업이나 기술 관련 문의가 있으신가요? 아래 양식으로 연락주세요.
@@ -78,7 +78,6 @@ const ContactSection = () => {
             className="bg-[#151515]/80 backdrop-blur-sm border border-[#333]/40 rounded-xl p-8" 
             onSubmit={handleSubmit}
           >
-            <h3 className="font-display text-xl font-bold text-white mb-6">메시지 보내기</h3>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
               <div>
@@ -87,7 +86,6 @@ const ContactSection = () => {
                   type="text" 
                   id="name" 
                   className="w-full px-4 py-3 bg-[#1D1D1D] border border-[#333] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4D8CFF]/50 focus:border-[#4D8CFF] text-white transition-colors duration-300" 
-                  placeholder="홍길동"
                   value={formData.name}
                   onChange={handleChange}
                   required
@@ -100,7 +98,6 @@ const ContactSection = () => {
                   type="email" 
                   id="email" 
                   className="w-full px-4 py-3 bg-[#1D1D1D] border border-[#333] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4D8CFF]/50 focus:border-[#4D8CFF] text-white transition-colors duration-300" 
-                  placeholder="example@email.com"
                   value={formData.email}
                   onChange={handleChange}
                   required
@@ -114,7 +111,6 @@ const ContactSection = () => {
                 type="text" 
                 id="subject" 
                 className="w-full px-4 py-3 bg-[#1D1D1D] border border-[#333] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4D8CFF]/50 focus:border-[#4D8CFF] text-white transition-colors duration-300" 
-                placeholder="AI 프로젝트 협업 문의"
                 value={formData.subject}
                 onChange={handleChange}
                 required
@@ -125,9 +121,8 @@ const ContactSection = () => {
               <label htmlFor="message" className="block font-sans text-sm font-medium text-white/70 mb-2">메시지</label>
               <textarea 
                 id="message" 
-                rows={5} 
+                rows={4} 
                 className="w-full px-4 py-3 bg-[#1D1D1D] border border-[#333] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4D8CFF]/50 focus:border-[#4D8CFF] text-white transition-colors duration-300" 
-                placeholder="안녕하세요, 생성형 AI 프로젝트에 대해 논의하고 싶습니다..."
                 value={formData.message}
                 onChange={handleChange}
                 required
@@ -145,11 +140,11 @@ const ContactSection = () => {
             </motion.button>
           </form>
           
-          <div className="mt-8 text-center">
+          {/* <div className="mt-8 text-center">
             <a href={`mailto:${userData.email}`} className="text-white/70 hover:text-[#4D8CFF] transition-colors duration-300">
               {userData.email}
             </a>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
