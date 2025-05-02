@@ -26,13 +26,13 @@ const HeroSection = () => {
               저는 <span className="text-[#4D8CFF]">이봉기</span>입니다
             </h1>
             
-            <h2 className="font-display text-3xl font-medium text-[#4D8CFF]/90 mb-6">
+            <h2 className="font-display text-3xl font-medium text-white mb-6">
               {userData.headline}
             </h2>
             
-            <div className="space-y-4 text-white/70 leading-relaxed mb-8">
+            <div className="text-white/70 leading-relaxed mb-8">
               {userData.about.map((paragraph, index) => (
-                <p key={index} className={`font-sans ${index === 0 ? 'text-lg' : 'text-base'}`}>
+                <p key={index} className={`font-sans ${index === 0 ? 'text-lg' : 'text-base'} mb-1`}>
                   {paragraph}
                 </p>
               ))}
@@ -92,18 +92,12 @@ const HeroSection = () => {
               
               {/* 프로필 이미지 컨테이너 */}
               <div className="relative z-10 p-1 bg-gradient-to-r from-[#4D8CFF] to-[#7B5FFF] rounded-lg shadow-xl">
-                <div className="bg-[#121212] p-4 rounded-lg">
+                <div className="bg-[#121212] p-2 rounded-lg">
                   <img 
-                    src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=600&h=600&crop=faces"
+                    src="https://media.licdn.com/dms/image/v2/C5103AQEuWf2uO41Wgg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1533550253543?e=1751500800&v=beta&t=I7kfyyay8yPcKfb_j2QjpyY6eGCL8VLQD2e7PDjs-B4"
                     alt="이봉기 프로필"
                     className="w-full h-auto rounded-lg shadow-inner object-cover"
                   />
-                  
-                  <div className="absolute -bottom-3 -right-3 bg-[#121212] border-4 border-[#121212] rounded-full shadow-lg blue-glow">
-                    <div className="bg-gradient-to-r from-[#4D8CFF] to-[#7B5FFF] text-white text-xs px-3 py-1 rounded-full">
-                      <i className="fas fa-check mr-1"></i> 카카오페이
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>

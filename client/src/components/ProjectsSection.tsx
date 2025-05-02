@@ -1,5 +1,8 @@
 import { motion } from "framer-motion";
 import { userData } from "@/data/portfolio";
+import { useState } from "react";
+import ProjectDetailModal from "./ProjectDetailModal";
+import { Project } from "@/types";
 
 // 프로젝트 아이콘 매핑
 const getProjectIcon = (categories: string[]) => {
@@ -20,32 +23,32 @@ const getProjectIcon = (categories: string[]) => {
 const getProjectTheme = (index: number) => {
   const themes = [
     {
-      bg: "bg-gradient-to-br from-[#FFEB00]/10 to-[#FFEB00]/5",
-      iconBg: "bg-[#FFEB00]/10",
-      iconColor: "text-[#FFEB00]",
-      borderHover: "hover:border-[#FFEB00]/40",
-      buttonColor: "text-[#FFEB00]"
+      bg: "bg-gradient-to-br from-[#4D8CFF]/10 to-[#4D8CFF]/5",
+      iconBg: "bg-[#4D8CFF]/10",
+      iconColor: "text-[#4D8CFF]",
+      borderHover: "hover:border-[#4D8CFF]/40",
+      buttonColor: "text-[#4D8CFF]"
     },
     {
-      bg: "bg-gradient-to-br from-[#FFD600]/10 to-[#FFD600]/5",
-      iconBg: "bg-[#FFD600]/10",
-      iconColor: "text-[#FFD600]",
-      borderHover: "hover:border-[#FFD600]/40",
-      buttonColor: "text-[#FFD600]"
+      bg: "bg-gradient-to-br from-[#7B5FFF]/10 to-[#7B5FFF]/5",
+      iconBg: "bg-[#7B5FFF]/10",
+      iconColor: "text-[#7B5FFF]",
+      borderHover: "hover:border-[#7B5FFF]/40",
+      buttonColor: "text-[#7B5FFF]"
     },
     {
-      bg: "bg-gradient-to-br from-[#FFC107]/10 to-[#FFC107]/5",
-      iconBg: "bg-[#FFC107]/10",
-      iconColor: "text-[#FFC107]",
-      borderHover: "hover:border-[#FFC107]/40",
-      buttonColor: "text-[#FFC107]"
+      bg: "bg-gradient-to-br from-[#5AC8FA]/10 to-[#5AC8FA]/5",
+      iconBg: "bg-[#5AC8FA]/10",
+      iconColor: "text-[#5AC8FA]",
+      borderHover: "hover:border-[#5AC8FA]/40",
+      buttonColor: "text-[#5AC8FA]"
     },
     {
-      bg: "bg-gradient-to-br from-[#FFB300]/10 to-[#FFB300]/5",
-      iconBg: "bg-[#FFB300]/10",
-      iconColor: "text-[#FFB300]",
-      borderHover: "hover:border-[#FFB300]/40",
-      buttonColor: "text-[#FFB300]"
+      bg: "bg-gradient-to-br from-[#34C759]/10 to-[#34C759]/5",
+      iconBg: "bg-[#34C759]/10",
+      iconColor: "text-[#34C759]",
+      borderHover: "hover:border-[#34C759]/40",
+      buttonColor: "text-[#34C759]"
     }
   ];
   
@@ -55,12 +58,12 @@ const getProjectTheme = (index: number) => {
 // 상태 표시 스타일
 const getStateStyle = (state: string) => {
   switch(state) {
-    case "Coming Soon":
+    case "개발 완료":
+      return "text-green-400 bg-green-400/10";
+      case "Coming Soon":
       return "text-yellow-400 bg-yellow-400/10";
     case "개발 진행 중":
       return "text-blue-400 bg-blue-400/10";
-    case "알파 테스트 중":
-      return "text-green-400 bg-green-400/10";
     case "2025 출시 예정":
       return "text-purple-400 bg-purple-400/10";
     default:
@@ -68,13 +71,29 @@ const getStateStyle = (state: string) => {
   }
 };
 
-const ProjectCard = ({ project, index }: { project: any, index: number }) => {
+interface ProjectTheme {
+  bg: string;
+  iconBg: string;
+  iconColor: string;
+  borderHover: string;
+  buttonColor: string;
+}
+
+const ProjectCard = ({ 
+  project, 
+  index,
+  onOpenDetails 
+}: { 
+  project: Project, 
+  index: number,
+  onOpenDetails: (project: Project, theme: ProjectTheme) => void 
+}) => {
   const theme = getProjectTheme(index);
   const icon = getProjectIcon(project.categories);
   
   return (
     <motion.div 
-      className={`project-card rounded-xl ${theme.bg} ${theme.borderHover}`}
+      className={`project-card rounded-xl border border-[#333]/10 ${theme.bg} ${theme.borderHover}`}
       whileHover={{ y: -5 }}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
@@ -110,13 +129,13 @@ const ProjectCard = ({ project, index }: { project: any, index: number }) => {
         </div>
         
         <div className="pt-4 border-t border-[#333]/30">
-          <a 
-            href="#" 
+          <button 
+            onClick={() => onOpenDetails(project, theme)}
             className={`${theme.buttonColor} font-medium text-sm transition-colors duration-300 inline-flex items-center`}
           >
             <span>{project.state === "Coming Soon" ? "출시 예정" : "자세히 보기"}</span>
             <i className="fas fa-arrow-right ml-2 text-xs"></i>
-          </a>
+          </button>
         </div>
       </div>
     </motion.div>
@@ -124,27 +143,58 @@ const ProjectCard = ({ project, index }: { project: any, index: number }) => {
 };
 
 const ProjectsSection = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [selectedTheme, setSelectedTheme] = useState<ProjectTheme | null>(null);
+
+  const handleOpenDetails = (project: Project, theme: ProjectTheme) => {
+    setSelectedProject(project);
+    setSelectedTheme(theme);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <section id="projects" className="py-20 section-fade-in">
       <div className="container mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-block mb-4 rounded-full px-3 py-1 text-xs font-medium bg-[#FFEB00]/10 text-[#FFEB00]">
+          <div className="inline-block mb-4 rounded-full px-3 py-1 text-xs font-medium bg-[#4D8CFF]/10 text-[#4D8CFF]">
             프로젝트 & 성과
           </div>
           <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-4">주요 프로젝트</h2>
-          <div className="h-1 w-20 bg-[#FFEB00] mb-8 mx-auto"></div>
+          <div className="h-1 w-20 bg-[#4D8CFF] mb-8 mx-auto"></div>
           <p className="font-sans text-white/70 leading-relaxed">
             카카오페이에서 진행한 AI 기반 금융 서비스 프로젝트들입니다.
+          </p>
+          <p className="font-sans text-white/70 leading-relaxed">
             사용자 경험을 개선하고 혁신적인 금융 솔루션을 제공하는 것을 목표로 합니다.
           </p>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {userData.projects.map((project, index) => (
-            <ProjectCard key={index} project={project} index={index} />
+            <ProjectCard 
+              key={index} 
+              project={project} 
+              index={index} 
+              onOpenDetails={handleOpenDetails} 
+            />
           ))}
         </div>
       </div>
+
+      {/* 프로젝트 상세 모달 */}
+      {selectedProject && (
+        <ProjectDetailModal
+          project={selectedProject}
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+          theme={selectedTheme || getProjectTheme(0)}
+        />
+      )}
     </section>
   );
 };

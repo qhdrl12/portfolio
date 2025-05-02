@@ -14,6 +14,24 @@ export interface Tool {
   icon: string;
 }
 
+export interface ProjectResult {
+  title: string;
+  description: string;
+  imageUrl: string;
+}
+
+export interface Architecture {
+  imageUrl: string;
+}
+
+export interface ProjectDetailContent {
+  overview: string;
+  architecture?: Architecture;
+  results: ProjectResult[];
+  myRole: string[];
+  impact: string;
+}
+
 export interface Project {
   title: string;
   description: string;
@@ -21,6 +39,8 @@ export interface Project {
   categories: string[];
   link?: string;
   state?: string;
+  content?: string;
+  detailContent?: ProjectDetailContent;
 }
 
 export interface ContactMessage {
@@ -36,13 +56,12 @@ export interface UserData {
   headline: string;
   portraitUrl?: string;
   about: string[];
+  detailAbout: string[];
   education: string[];
   experience: string[];
   resumeUrl?: string;
   portfolioUrl?: string;
   email: string;
-  phone?: string;
-  location: string;
   socialLinks: SocialLink[];
   designSkills: Skill[];
   technicalSkills: Skill[];

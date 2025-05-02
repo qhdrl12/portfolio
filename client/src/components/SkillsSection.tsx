@@ -34,6 +34,9 @@ const SkillBar = ({ name, level, index }: { name: string, level: number, index: 
 };
 
 const TechIcon = ({ name, icon, index }: { name: string, icon: string, index: number }) => {
+  // Check if the icon is a path to an SVG file
+  const isSvgPath = icon.startsWith('/');
+  
   return (
     <motion.div 
       className="flex flex-col items-center"
@@ -43,7 +46,11 @@ const TechIcon = ({ name, icon, index }: { name: string, icon: string, index: nu
       transition={{ duration: 0.3, delay: index * 0.05 }}
     >
       <div className="tech-icon w-16 h-16 md:w-20 md:h-20 rounded-xl flex items-center justify-center shadow-sm mb-3 mx-auto">
-        <i className={`${icon} text-2xl md:text-3xl text-[#4D8CFF]`}></i>
+        {isSvgPath ? (
+          <img src={icon} alt={name} className="w-10 h-10 md:w-12 md:h-12" />
+        ) : (
+          <i className={`${icon} text-2xl md:text-3xl text-[#4D8CFF]`}></i>
+        )}
       </div>
       <span className="font-sans text-sm font-medium text-white/70">{name}</span>
     </motion.div>
@@ -61,7 +68,7 @@ const SkillsSection = () => {
           <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-4">기술 스택</h2>
           <div className="h-1 w-20 bg-[#4D8CFF] mb-8 mx-auto"></div>
           <p className="font-sans text-white/70 leading-relaxed">
-            생성형 AI 개발 및 ML 솔루션에 특화된 최신 기술 스택과 프로그래밍 언어를 사용합니다.
+            생성형 AI 개발에 특화된 최신 기술 스택과 프로그래밍 언어를 사용합니다.
           </p>
         </div>
         
@@ -87,9 +94,9 @@ const SkillsSection = () => {
                 <div className="flex-shrink-0 h-10 w-10 rounded-lg bg-[#4D8CFF]/10 flex items-center justify-center mr-4 text-[#4D8CFF]">
                   <i className="fas fa-brain text-lg"></i>
                 </div>
-                <h4 className="text-white font-medium">AI & ML</h4>
+                <h4 className="text-white font-medium">AI & Serving</h4>
               </div>
-              <p className="text-white/60 text-sm">TensorFlow, PyTorch, Hugging Face, OpenAI, RAG, LLM fine-tuning, ChatGPT API, BERT, GPT, LangChain</p>
+              <p className="text-white/60 text-sm">Hugging Face, RAG, ChatGPT, OpenSource LLM, LangChain, LangGraph, Dify, Agent, MCP, vLLM, Triton Inference Server</p>
             </div>
             
             <div className="flex-1 bg-[#151515]/80 backdrop-blur-sm border border-[#333]/40 rounded-xl p-6 hover:border-[#4D8CFF]/30 transition-colors duration-300">
@@ -99,7 +106,7 @@ const SkillsSection = () => {
                 </div>
                 <h4 className="text-white font-medium">클라우드 & 배포</h4>
               </div>
-              <p className="text-white/60 text-sm">AWS, Google Cloud, Azure, Docker, Kubernetes, CI/CD, Firebase, Serverless Architecture</p>
+              <p className="text-white/60 text-sm">AWS, Google Cloud, Azure, Docker, Kubernetes, CI/CD, Serverless Architecture</p>
             </div>
           </div>
         </div>

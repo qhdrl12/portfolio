@@ -72,7 +72,7 @@ const AboutSection = () => {
                 <h3 className="font-display text-xl font-bold text-white mb-6">소개</h3>
                 
                 <div className="space-y-4">
-                  {userData.about.map((paragraph, index) => (
+                  {userData.detailAbout.map((paragraph, index) => (
                     <p key={index} className="text-white/70 leading-relaxed">
                       {paragraph}
                     </p>
@@ -85,8 +85,8 @@ const AboutSection = () => {
                       <i className="fas fa-brain text-lg"></i>
                     </div>
                     <div>
-                      <h4 className="text-white font-medium mb-1">AI 전문가</h4>
-                      <p className="text-white/60 text-sm">최신 생성형 AI 기술과 대규모 언어 모델 개발</p>
+                      <h4 className="text-white font-medium mb-1">AI 서비스</h4>
+                      <p className="text-white/60 text-sm">오픈소스 LLM 활용, 모델 평가, 모델 서빙, 모델 개선</p>
                     </div>
                   </div>
                   
@@ -96,7 +96,7 @@ const AboutSection = () => {
                     </div>
                     <div>
                       <h4 className="text-white font-medium mb-1">풀스택 개발자</h4>
-                      <p className="text-white/60 text-sm">강력한 웹 애플리케이션 및 API 시스템 구축</p>
+                      <p className="text-white/60 text-sm">웹 애플리케이션 제작, AI 기반 솔루션 등</p>
                     </div>
                   </div>
                 </div>
