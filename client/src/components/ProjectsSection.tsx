@@ -142,10 +142,67 @@ const ProjectCard = ({
   );
 };
 
+// 기타 프로젝트를 위한 컴팩트 카드 컴포넌트
+const CompactProjectCard = ({ 
+  project, 
+  index,
+  onOpenDetails 
+}: { 
+  project: Project, 
+  index: number,
+  onOpenDetails: (project: Project, theme: ProjectTheme) => void 
+}) => {
+  const theme = getProjectTheme(index);
+  const icon = getProjectIcon(project.categories);
+  
+  return (
+    <motion.div 
+      className={`compact-project-card rounded-lg border border-[#333]/10 ${theme.bg} ${theme.borderHover} h-full`}
+      whileHover={{ y: -3 }}
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.2, delay: index * 0.05 }}
+      onClick={() => onOpenDetails(project, theme)}
+    >
+      <div className="p-4">
+        <div className="flex items-center gap-3 mb-3">
+          <div className={`${theme.iconBg} w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0`}>
+            <i className={`${icon} ${theme.iconColor} text-sm`}></i>
+          </div>
+          <h3 className="font-display text-base font-semibold text-white truncate">{project.title}</h3>
+        </div>
+        
+        <p className="font-sans text-white/70 mb-3 text-xs line-clamp-2">{project.description}</p>
+        
+        <div className="flex flex-wrap gap-1">
+          {project.categories.slice(0, 3).map((category: string, catIndex: number) => (
+            <span 
+              key={catIndex}
+              className="text-[10px] font-medium py-0.5 px-1.5 rounded-full bg-[#333]/50 text-white/70"
+            >
+              {category}
+            </span>
+          ))}
+          {project.categories.length > 3 && (
+            <span className="text-[10px] font-medium py-0.5 px-1.5 rounded-full bg-[#333]/50 text-white/70">
+              +{project.categories.length - 3}
+            </span>
+          )}
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
 const ProjectsSection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [selectedTheme, setSelectedTheme] = useState<ProjectTheme | null>(null);
+  const [showOtherProjects, setShowOtherProjects] = useState(true);
+
+  // isMain 속성을 기준으로 주요 프로젝트와 기타 프로젝트 분리
+  const mainProjects = userData.projects.filter(project => project.isMain);
+  const otherProjects = userData.projects.filter(project => !project.isMain);
 
   const handleOpenDetails = (project: Project, theme: ProjectTheme) => {
     setSelectedProject(project);
@@ -155,6 +212,10 @@ const ProjectsSection = () => {
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
+  };
+
+  const toggleOtherProjects = () => {
+    setShowOtherProjects(!showOtherProjects);
   };
 
   return (
@@ -174,8 +235,8 @@ const ProjectsSection = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {userData.projects.map((project, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+          {mainProjects.map((project, index) => (
             <ProjectCard 
               key={index} 
               project={project} 
@@ -184,6 +245,44 @@ const ProjectsSection = () => {
             />
           ))}
         </div>
+
+        {/* 기타 프로젝트 섹션 */}
+        {otherProjects.length > 0 && (
+          <div className="mt-12">
+            <div className="flex justify-between items-center mb-8">
+              <div className="flex items-center gap-3">
+                <h2 className="font-display text-2xl font-bold text-white">기타 프로젝트</h2>
+                <div className="h-1 w-10 bg-[#7B5FFF]"></div>
+              </div>
+              <button 
+                onClick={toggleOtherProjects}
+                className="text-white/70 hover:text-white text-sm font-medium flex items-center gap-2 transition-colors duration-300"
+              >
+                <span>{showOtherProjects ? "접기" : "펼치기"}</span>
+                <i className={`fas fa-chevron-${showOtherProjects ? 'up' : 'down'} text-xs`}></i>
+              </button>
+            </div>
+
+            {showOtherProjects && (
+              <motion.div 
+                className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                {otherProjects.map((project, index) => (
+                  <CompactProjectCard
+                    key={index}
+                    project={project}
+                    index={index + mainProjects.length}
+                    onOpenDetails={handleOpenDetails}
+                  />
+                ))}
+              </motion.div>
+            )}
+          </div>
+        )}
       </div>
 
       {/* 프로젝트 상세 모달 */}

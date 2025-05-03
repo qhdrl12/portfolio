@@ -66,6 +66,7 @@ export const userData: UserData = {
       description: "카카오페이 보험진단 AI는 생성형 AI 기술을 활용하여 사용자가 가진 복잡한 보험 상품과 막막한 건강 관리에 대한 걱정을 해소하고, 개인 맞춤형 정보를 제안하는 서비스",
       categories: ["LLM", "RAG", "vLLM", "LangChain", "FastAPI", "K8s", "CSP", "Monitoring"],
       state: "개발 완료",
+      isMain: true,
       detailContent: {
         overview: "보험진단 AI는 사용자의 보험 상품과 건강 상태를 분석하여 맞춤형 정보를 제공하는 카카오페이의 AI 서비스입니다. LLM과 RAG 기술을 활용하여 복잡한 보험 정보를 이해하기 쉽게 설명하고 보험을 진단합니다.",
         architecture: {
@@ -99,6 +100,7 @@ export const userData: UserData = {
       description: "외국인 eKYC 서비스는 안면인식과 신분증 인식을 활용하여 비대면 환경에서 외국인 고객의 신원을 신뢰성 있게 확인하는 전자 고객확인제도 서비스",
       categories: ["얼굴인식", "신분증인식", "FastAPI", "Triton Inference Server", "Android SDK", "Admin", "Monitoring"],
       state: "개발 완료",
+      isMain: true,
       detailContent: {
         overview: "외국인 E-KYC 서비스는 비대면 환경에서 외국인 고객의 신원을 확인하는 시스템입니다. 얼굴 인식과 신분증 인식 기술을 결합하여 안전하고 효율적인 고객 확인 과정을 제공합니다.",
         architecture: {
@@ -128,10 +130,53 @@ export const userData: UserData = {
       }
     },
     {
+      title: "사내 AI 서비스 환경 구축",
+      description: "금융 환경 특성상 self-hosted 방식으로 Dify, LabelStudio, Langfuse 등 다양한 AI 도구들을 내부에 구축하여 AI 역량 강화 및 개발 생산성을 향상시키는 환경 조성",
+      categories: ["Dify", "LabelStudio", "Langfuse", "Milvus", "Workflow", "Agent", "MCP", "RAG"],
+      state: "개발 진행 중",
+      isMain: true,
+      detailContent: {
+        overview: "금융 보안 환경 내에서 AI 개발 생산성을 높이기 위해 다양한 오픈소스 도구들을 self-hosted로 구축하고 통합하여 내부 개발자들이 AI 기반 서비스를 효율적으로 개발할 수 있는 환경을 조성하고 있습니다.",
+        architecture: {
+          imageUrl: ""
+        },
+        results: [
+          {
+            title: "Dify 기반 AI Playground 환경 구축",
+            description: "통합 AI 개발을 위한 Dify 기반 Playground 환경을 구축했습니다. Workflow, Agent, MCP Tools등 다양한 AI 개발 기능을 제공하여 개발자들이 효율적으로 AI 애플리케이션을 테스트할 수 있는 환경을 조성했습니다.",
+            imageUrl: "/images/projects/ai-platform/dify.png"
+          },
+          {
+            title: "Milvus 벡터 데이터베이스 구축",
+            description: "효율적인 벡터 검색 기반의 RAG 시스템을 지원하기 위해 Milvus vectorstore를 구축하고 운영했습니다. 대규모 데이터셋에서 신속하고 정확한 검색을 가능하게 하여 AI 모델의 성능을 향상시켰습니다.",
+            imageUrl: "/images/projects/ai-platform/milvus-admin.png"
+          },
+          {
+            title: "LabelStudio 및 Langfuse 구축",
+            description: "데이터 라벨링을 위한 LabelStudio와 LLM trace 분석을 위한 Langfuse를 내부 시스템에 구축하고 서비스 연동을 완료했습니다. 이를 통해 고품질 학습 데이터 생성과 AI 모델 성능 분석 환경을 제공하였습니다.",
+            imageUrl: "/images/projects/ai-platform/labelstudio.png"
+          },
+          {
+            title: "프롬프트 관리 도구 및 데이터셋 평가 시스템 개발",
+            description: "AI 서비스 개발 효율성을 높이기 위한 프롬프트 관리 도구와 데이터셋 평가 연동 도구를 자체 개발을 진행하고 있습니다.",
+            imageUrl: "/images/projects/ai-platform/prompt.png"
+          }
+        ],
+        myRole: [
+          "Dify 기반 AI Playground 환경 구축",
+          "LabelStudio와 Langfuse 시스템 내부 구축 및 서비스 연동",
+          "Milvus vectorstore 구성 및 운영, RAG 서비스 연동",
+          "프롬프트 관리 도구 및 데이터셋 평가 연동 도구 개발"
+        ],
+        impact: "이 환경 구축을 통해 사내 AI 서비스 개발 속도가 약 70% 향상되었으며, 자체 구축된 도구들을 통해 프롬프트 최적화 및 데이터 품질 향상으로 AI 서비스의 전반적인 품질이 크게 개선될것으로 예상합니다."
+      }
+    },
+    {
       title: "AICC 상담 평가 AI",
       description: "AICC 상담 평가 AI는 LLM을 활용하여 상담 유형별 내용을 정해진 평가 기준에 따라 100% 자동 평가함으로써, 기존 수작업 평가의 한계를 넘어 상담 품질을 획기적으로 향상시키는 서비스",
       categories: ["LLM", "COT", "vLLM", "LangGraph", "LangChain", "FastAPI", "Monitoring"],
       state: "Coming Soon",
+      isMain: true,
       detailContent: {
         overview: "AICC 상담 평가 AI는 고객 상담 품질을 자동으로 평가하는 시스템입니다. 기존에 수작업으로 이루어지던 상담 평가를 LLM 기반의 AI가 대체함으로써 평가의 일관성과 효율성을 대폭 향상시켰습니다.",
         architecture: {
@@ -156,34 +201,36 @@ export const userData: UserData = {
       }
     },
     {
-      title: "KakaoPay AI Platform 1.0 구축",
-      description: "H200 및 L40s GPU 구성 및 인프라 설계를 기반으로, 학습, 서빙, 에이전트, 플레이그라운드 환경을 포괄하며 GPU 자원을 효율적으로 활용할 수 있는 플랫폼을 구축하는 것을 목표로 합니다",
-      categories: ["GPU Infra", "모델 학습", "모델 서빙", "Agent", "MCP", "K8s", "Kubeflow"],
-      state: "Coming Soon",
+      title: "Kakaopay AI 고객센터 FAQ & 주식봇",
+      description: "사용자의 카카오페이 거래 데이터를 분석하여 소비 패턴을 시각화하고 맞춤형 절약 팁을 제공하는 간단한 데이터 분석 도구",
+      categories: ["Gemma", "Mistral-Nemo", "RAG", "Langchain", "Milvus", "React", "Monitoring"],
+      state: "개발 완료",
+      isMain: false,
       detailContent: {
-        overview: "KakaoPay AI Platform은 카카오페이 내부 개발자들이 AI 모델을 효율적으로 학습, 배포, 모니터링할 수 있는 통합 플랫폼입니다. 최신 GPU 인프라를 기반으로 모델 개발부터 서비스 배포까지 전 과정을 지원합니다.",
+        overview: "LLM을 활용해 FAQ 문의 대응과 주식 정보 제공을 자동화함으로써, 카카오페이의 서비스 품질과 사용자 경험을 개선하였습니다.",
         architecture: {
-          imageUrl: "/images/projects/ai-platform/empty.png"
+          imageUrl: ""
         },
         results: [
           {
-            title: "GPU 인프라 구축",
-            description: "On-premise 환경에 구축된 H200 및 L40s GPU를 기반으로, Kubernetes 기반 GPU 리소스 관리 시스템을 설계하고 구현하여 GPU 자원의 효율적으로 분배 및 활용이 가능하도록 인프라를 최적화합니다. 또한, 통합 배포 시스템과의 연동을 통해 편리한 배포 지원과 모니터링 구성 및 로그 수집 자동화 쳬계를 구축하여 안정적인 운영 기반을 마련하였습니다.",
-            imageUrl: "/images/projects/ai-platform/empty.png"
+            title: "RAG 기반 고객센터 FAQ",
+            description: "카카오페이 고객들의 자주 묻는 질문(FAQ)에 대해 자연어로 이해하고 답변할 수 있는 LLM 기반의 고객센터 FAQ 시스템을 구축했습니다. 다양한 표현을 이해하고 문맥에 맞는 정확한 답변을 제공함으로써 고객 만족도를 높이고, 상담 효율을 개선합니다.",
+            imageUrl: "/images/projects/faq/faq.png"
           },
           {
-            title: "통합 AI 개발 환경 제공",
-            description: "Kubeflow 기반의 모델 학습 및 실험 관리 등 ML 파이프라인을 지원하고, MCP, RAG 연동을 통한 편리한 Agent 구축 및 Playground 환경에서의 다양한 실험 수행이 가능하며, 프롬프트와 데이터셋 관리 등 AI 서비스 개발을 위한 통합 기능을 제공합니다.",
-            imageUrl: "/images/projects/ai-platform/empty.png"
+            title: "LLM 기반 주식봇",
+            description: "LLM을 활용해 주식 토론방 요약, 실적 분석, 기업 개요 요약 기능을 제공하는 서비스입니다. 사용자는 방대한 주식 정보를 간단하고 직관적으로 확인할 수 있어, 빠르고 효율적인 투자 판단이 가능합니다.",
+            imageUrl: "/images/projects/faq/stock.png"
           }
         ],
         myRole: [
-          "Kubernetes(GPU) 기반 리소스 관리 시스템 개발",
-          "Kubeflow 기반 ML 파이프라인 구축",
-          "모델 서빙 플랫폼 아키텍처 설계",
-          "AI 에이전트 플레이그라운드 개발"
+          "고객센터 FAQ & 주식봇 시스템 설계",
+          "Langchain RAG 기반 API 개발",
+          "Cache 최적화 및 모니터링 시스템 구축",
+          "주식 데이터 수집 파이프라인 구축",
+          "FAQ 데이터 임베딩 및 업로드 관리를 위한 관리자 페이지 개발"
         ],
-        impact: "이 플랫폼을 통해 카카오페이 내 AI 모델 개발 및 배포 시간이 평균 70% 단축될 것으로 예상됩니다. 또한 학습 및 평가 지원을 통해 GPU 자원을 효율적으로 활용할 수 있도록 지원합니다."
+        impact: "고객센터 FAQ 탐색 시간을 30% 감소 시켰습니다. 주식봇은 복잡한 주식 정보를 간결하게 요약하여 제공함으로써, 정보 탐색 시간을 줄이는데 기여하였습니다."
       }
     }
   ]
