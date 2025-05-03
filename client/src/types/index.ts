@@ -41,6 +41,7 @@ export interface Project {
   state?: string;
   content?: string;
   detailContent?: ProjectDetailContent;
+  isMain?: boolean;
 }
 
 export interface ContactMessage {

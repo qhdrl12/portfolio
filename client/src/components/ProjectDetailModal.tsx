@@ -1,6 +1,6 @@
 import { Project } from '@/types';
 import { Dialog, Transition, TransitionChild } from '@headlessui/react';
-import { Fragment, useCallback } from 'react';
+import { Fragment, useCallback, useState, useEffect, useRef } from 'react';
 import { FaTimes } from 'react-icons/fa';
 
 interface ProjectTheme {
@@ -24,9 +24,44 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
   onClose,
   theme,
 }) => {
+  const [enlargedImage, setEnlargedImage] = useState<string | null>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
+
   const handleClose = useCallback(() => {
+    setEnlargedImage(null);
     onClose();
   }, [onClose]);
+
+  const openEnlargedImage = (imageUrl: string) => {
+    setEnlargedImage(imageUrl);
+  };
+
+  const closeEnlargedImage = () => {
+    setEnlargedImage(null);
+  };
+
+  useEffect(() => {
+    // Reset enlarged image state when modal closes
+    if (!isOpen) {
+      setEnlargedImage(null);
+    }
+    
+    // Handle ESC key globally
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        if (enlargedImage) {
+          e.stopPropagation();
+          e.preventDefault();
+          closeEnlargedImage();
+        }
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown, true); // Use capture phase
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown, true);
+    };
+  }, [isOpen, enlargedImage]);
 
   const getStateStyle = (state: string) => {
     switch(state) {
@@ -45,8 +80,38 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
 
   return (
     <Transition appear show={isOpen} as={Fragment}>
-      <Dialog as="div" className="fixed inset-0 z-50 overflow-y-auto" onClose={handleClose}>
-        <div className="min-h-screen px-4 text-center">
+      <Dialog 
+        as="div" 
+        className="fixed inset-0 z-50 overflow-y-auto" 
+        onClose={enlargedImage ? () => {} : handleClose}
+        initialFocus={dialogRef}
+      >
+        <div ref={dialogRef} className="min-h-screen px-4 text-center">
+          {/* Enlarged Image Modal */}
+          {enlargedImage && (
+            <div 
+              className="fixed inset-0 z-[60] flex items-center justify-center bg-black/90" 
+              onClick={closeEnlargedImage}
+            >
+              <div className="max-w-[90vw] max-h-[90vh] relative">
+                <button 
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    closeEnlargedImage();
+                  }}
+                  className="absolute top-4 right-4 text-white bg-black/50 p-2 rounded-full hover:bg-black/70"
+                >
+                  <FaTimes size={20} />
+                </button>
+                <img 
+                  src={enlargedImage} 
+                  alt="확대 이미지" 
+                  className="max-w-full max-h-[90vh] object-contain"
+                />
+              </div>
+            </div>
+          )}
+          
           <TransitionChild
             as={Fragment}
             enter="ease-out duration-300"
@@ -121,15 +186,19 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
                     </div>
 
                     {/* Architecture */}
-                    {project.detailContent.architecture && (
+                    {project.detailContent?.architecture?.imageUrl && (
                       <div>
                         <h4 className="text-xl font-semibold text-white mb-4">아키텍처</h4>
                         <div className="bg-[#222]/40 rounded-lg overflow-hidden shadow-md">
                           <div className="p-4">
                             <img
-                              src={project.detailContent.architecture.imageUrl}
+                              src={project.detailContent?.architecture?.imageUrl}
                               alt="프로젝트 아키텍처"
-                              className="w-full h-auto object-contain"
+                              className="w-full h-auto object-contain cursor-pointer hover:opacity-90"
+                              onClick={() => {
+                                const imageUrl = project.detailContent?.architecture?.imageUrl;
+                                if (imageUrl) openEnlargedImage(imageUrl);
+                              }}
                             />
                           </div>
                         </div>
@@ -149,7 +218,8 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
                               <img
                                 src={result.imageUrl}
                                 alt={result.title}
-                                className="w-full object-contain"
+                                className="w-full object-contain cursor-pointer hover:opacity-90"
+                                onClick={() => openEnlargedImage(result.imageUrl)}
                               />
                             </div>
                             <div className="p-4">

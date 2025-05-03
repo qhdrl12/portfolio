@@ -39,7 +39,7 @@ const Header = () => {
               <li><a href="#about" className="nav-link font-sans text-white hover:text-[#4D8CFF] transition-colors duration-300">소개</a></li>
               <li><a href="#projects" className="nav-link font-sans text-white hover:text-[#4D8CFF] transition-colors duration-300">프로젝트</a></li>
               <li><a href="#skills" className="nav-link font-sans text-white hover:text-[#4D8CFF] transition-colors duration-300">기술</a></li>
-              <li><a href="#contact" className="nav-link font-sans text-white hover:text-[#4D8CFF] transition-colors duration-300">연락처</a></li>
+              {/* <li><a href="#contact" className="nav-link font-sans text-white hover:text-[#4D8CFF] transition-colors duration-300">연락처</a></li> */}
             </ul>
           </nav>
           
@@ -60,7 +60,7 @@ const Header = () => {
             <li><a href="#about" className="block py-2 nav-link font-sans text-white hover:text-[#4D8CFF] transition-colors duration-300" onClick={() => setMobileMenuOpen(false)}>소개</a></li>
             <li><a href="#projects" className="block py-2 nav-link font-sans text-white hover:text-[#4D8CFF] transition-colors duration-300" onClick={() => setMobileMenuOpen(false)}>프로젝트</a></li>
             <li><a href="#skills" className="block py-2 nav-link font-sans text-white hover:text-[#4D8CFF] transition-colors duration-300" onClick={() => setMobileMenuOpen(false)}>기술</a></li>
-            <li><a href="#contact" className="block py-2 nav-link font-sans text-white hover:text-[#4D8CFF] transition-colors duration-300" onClick={() => setMobileMenuOpen(false)}>연락처</a></li>
+            {/* <li><a href="#contact" className="block py-2 nav-link font-sans text-white hover:text-[#4D8CFF] transition-colors duration-300" onClick={() => setMobileMenuOpen(false)}>연락처</a></li> */}
           </ul>
         </nav>
       </div>
